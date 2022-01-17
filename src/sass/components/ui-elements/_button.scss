@@ -1,0 +1,63 @@
+.button {
+  line-height: 1.2 !important;
+  text-decoration: 0;
+  font-family: $font-sans;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;  
+  background-color: $color-brawn;
+  color: $color-decor;
+  padding: 1.4rem 6rem;
+  border: 2px solid transparent;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: all 200ms;
+  position: relative;
+
+  &:hover{
+      background-color: $color-dark;
+  }
+
+  &--inverse {
+    background: transparent;    
+    border: $border-line;
+    color: $color-dark;
+    letter-spacing: 1px;
+
+    &:hover{
+        background-color: transparent;
+        border: 1px solid $color-dark;
+    }
+
+  }
+
+  
+
+//   &--danger {
+//     background: $color-red;
+//     border-color: $color-red;
+//     color: $color-grey-dark-2;
+//   }
+
+  &:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    background: $color-soft;
+    color: $color-brawn;
+    border-color: $color-brawn;
+    cursor: not-allowed;
+  }
+
+  &--small {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  &--big {
+    padding: 1.5rem 4rem;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}

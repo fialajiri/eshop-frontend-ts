@@ -1,0 +1,85 @@
+.navigation {
+  height: 7rem;
+  position: relative;
+  
+}
+
+.main__navigation {
+  position: fixed;
+  
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 7rem;
+  background-color: $color-soft;
+ 
+  border-bottom: $border-line;
+  z-index: 10;
+
+  &__links {
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+  }
+
+  &__icon {
+    position: relative;
+
+    &,
+    &::after,
+    &::before {
+      display: inline-block;
+      height: 1.5px;
+      width: 4.5rem;
+      background-color: $color-black;
+      transform-origin: 0% 0%;
+      transform: translate(0px 0px);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 400ms;
+    }
+
+    &::before {
+      top: -1.2rem;
+    }
+
+    &::after {
+      top: 1.2rem;
+    }
+  }
+
+  &__button:hover &__icon {
+    animation-name: nav-button-effect;
+    animation-duration: 500ms;
+    animation-delay: 100ms;
+    animation-timing-function: cubic-bezier(0.2, 1.12, 0.78, 0.93);
+  }
+
+  &__button:hover &__icon::before {
+    animation-name: nav-button-effect;
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.2, 1.12, 0.78, 0.93);
+  }
+
+  &__button:hover &__icon::after {
+    animation-name: nav-button-effect;
+    animation-duration: 500ms;
+    animation-delay: 100ms;
+    animation-timing-function: cubic-bezier(0.2, 1.12, 0.78, 0.93);
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+}

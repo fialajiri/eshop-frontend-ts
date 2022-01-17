@@ -1,0 +1,32 @@
+// COLORS
+
+
+$color-dark: #1f1f1f;
+$color-decor: #f9f9f9;
+$color-soft: #ebe6d7;
+$color-line: #d1c7a3;
+$color-brawn: #645832;
+
+$color-white: #fff;
+$color-black: #000;
+
+// LINES AND SHADOW
+
+$shadow-light: 0 2rem 6rem rgba(0, 0, 0, 0.03);
+$shadow-light-2: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+$shadow-dark: 0 3rem 8rem rgba($color-black, 0.3);
+$shadow-dark-2: 0 5rem 10rem rgba($color-black, 0.5);
+
+$border-radius: .5rem;
+$border-line: 1px solid $color-line;
+
+
+// FONT
+// $font-serif: "Imbue Garamond", serif;
+$font-serif: "Cormorant Garamond", serif;
+$font-sans: "Open Sans", sans-serif;
+
+$default-font-size: 1.6rem;
+
+
+

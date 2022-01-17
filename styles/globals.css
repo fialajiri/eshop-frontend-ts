@@ -1,16 +1,381 @@
-html,
-body {
-  padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Imbue:wght@300;400;500;600;700&display=swap");
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
 }
 
-* {
+body {
   box-sizing: border-box;
+  background-color: #ebe6d7;
+  height: 50rem;
 }
+
+::selection {
+  background-color: #645832;
+  color: #fff;
+}
+
+@keyframes nav-button-effect {
+  0% {
+    transform-origin: 0% 0%;
+    transform: translate3d(0px, 0px, 0px) scale(0, 1);
+  }
+  100% {
+    transform-origin: 0% 0%;
+    transform: translate3d(0px, 0px, 0px) scale(1, 1);
+  }
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6rem;
+  color: #1f1f1f;
+  text-align: left;
+}
+
+.heading-secondary {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+}
+.paragraph:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.base__container {
+  max-width: 160rem;
+  margin: 0 auto;
+}
+
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-top-big {
+  margin-top: 8rem !important;
+}
+
+.u-margin-top-huge {
+  margin-top: 10rem !important;
+}
+
+.navigation {
+  height: 7rem;
+  position: relative;
+}
+
+.main__navigation {
+  position: fixed;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 7rem;
+  background-color: #ebe6d7;
+  border-bottom: 1px solid #d1c7a3;
+  z-index: 10;
+}
+.main__navigation__checkbox {
+  display: none;
+}
+.main__navigation__icon {
+  position: relative;
+}
+.main__navigation__icon, .main__navigation__icon::after, .main__navigation__icon::before {
+  display: inline-block;
+  height: 1.5px;
+  width: 4.5rem;
+  background-color: #000;
+  transform-origin: 0% 0%;
+  transform: translate(0px 0px);
+}
+.main__navigation__icon::before, .main__navigation__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  transition: all 400ms;
+}
+.main__navigation__icon::before {
+  top: -1.2rem;
+}
+.main__navigation__icon::after {
+  top: 1.2rem;
+}
+.main__navigation__button:hover .main__navigation__icon {
+  animation-name: nav-button-effect;
+  animation-duration: 500ms;
+  animation-delay: 100ms;
+  animation-timing-function: cubic-bezier(0.2, 1.12, 0.78, 0.93);
+}
+.main__navigation__button:hover .main__navigation__icon::before {
+  animation-name: nav-button-effect;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.2, 1.12, 0.78, 0.93);
+}
+.main__navigation__button:hover .main__navigation__icon::after {
+  animation-name: nav-button-effect;
+  animation-duration: 500ms;
+  animation-delay: 100ms;
+  animation-timing-function: cubic-bezier(0.2, 1.12, 0.78, 0.93);
+}
+.main__navigation__checkbox:checked + .main__navigation__button .main__navigation__icon {
+  background-color: transparent;
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+.nav__list__item {
+  padding: 2rem 4rem;
+}
+.nav__list__item a {
+  line-height: 1.2 !important;
+  text-decoration: none;
+  color: #1f1f1f;
+  font-size: 3.5rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  z-index: 10;
+  cursor: pointer;
+}
+.nav__button {
+  text-decoration: none;
+  color: #1f1f1f;
+  font-size: 3.5rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  z-index: 10;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  line-height: 1.2;
+}
+
+.navigation__drawer {
+  display: block;
+}
+
+.side-drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 40%;
+  background: rgba(235, 230, 215, 0.95);
+  box-shadow: 0 3rem 8rem rgba(0, 0, 0, 0.3);
+}
+
+.slide-in-left-enter {
+  transform: translateX(-100%);
+}
+
+.slide-in-left-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.slide-in-left-exit {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.slide-in-left-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 200ms;
+}
+
+.form-control {
+  margin: 0.75rem 0;
+}
+.form-control label, .form-control input, .form-control textarea, .form-control select {
+  display: block;
+}
+.form-control label {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.form-control p {
+  margin-top: 0.4rem;
+  font-size: 1.4rem;
+  visibility: hidden;
+}
+.form-control input, .form-control textarea, .form-control select {
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  border: 1px solid #d1c7a3;
+  background-color: #f9f9f9;
+  padding: 0.6rem 1rem;
+}
+.form-control input, .form-control textarea {
+  width: 100%;
+}
+.form-control input:focus, .form-control textarea:focus, .form-control select:focus {
+  outline: none;
+  background: #fff;
+}
+.form-control--invalid label, .form-control--invalid p {
+  color: #000;
+  visibility: visible;
+}
+.form-control--invalid input, .form-control--invalid textarea, .form-control--invalid select {
+  border-color: #645832;
+  background: #fcebeb;
+}
+
+.notification {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 5rem;
+  width: 100%;
+  background-color: #1b1b1b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0.5rem 10%;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.notification h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: white;
+}
+
+.notification p {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.pending {
+  background-color: #177cbe;
+}
+
+.success {
+  background-color: #10be58;
+}
+
+.error {
+  background-color: #e65035;
+}
+
+.button {
+  line-height: 1.2 !important;
+  text-decoration: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background-color: #645832;
+  color: #f9f9f9;
+  padding: 1.4rem 6rem;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 200ms;
+  position: relative;
+}
+.button:hover {
+  background-color: #1f1f1f;
+}
+.button--inverse {
+  background: transparent;
+  border: 1px solid #d1c7a3;
+  color: #1f1f1f;
+  letter-spacing: 1px;
+}
+.button--inverse:hover {
+  background-color: transparent;
+  border: 1px solid #1f1f1f;
+}
+.button:disabled, .button:hover:disabled, .button:active:disabled {
+  background: #ebe6d7;
+  color: #645832;
+  border-color: #645832;
+  cursor: not-allowed;
+}
+.button--small {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.button--big {
+  padding: 1.5rem 4rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.backdrop {
+  position: fixed;
+  top: 7rem;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(100, 88, 50, 0.51);
+  z-index: 10;
+}
+
+.signin__container {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*# sourceMappingURL=globals.css.map */

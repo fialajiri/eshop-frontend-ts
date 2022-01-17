@@ -1,0 +1,37 @@
+.nav {
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+
+    &__item {
+      padding: 2rem 4rem;
+
+      & a {
+        line-height: 1.2 !important;
+        text-decoration: none;
+        color: $color-dark;
+        font-size: 3.5rem;
+        font-family: $font-serif;
+        font-weight: 500;
+        text-transform: uppercase;
+        z-index: 10;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__button {
+    text-decoration: none;
+    color: $color-dark;
+    font-size: 3.5rem;
+    font-family: $font-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    z-index: 10;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    line-height: 1.2;
+  }
+}
