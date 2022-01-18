@@ -1,0 +1,9 @@
+.product-list {
+  &__grid {
+    grid-column: 2 / -1;
+    grid-row: 1 / -1;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

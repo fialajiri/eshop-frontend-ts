@@ -1,44 +1,53 @@
-import {render, screen} from '../../../../src/test-utils/testing-library-utils'
-import userEvent from '@testing-library/user-event'
+import {
+  render,
+  screen,
+  waitFor,
+} from "../../../test-utils/testing-library-utils";
+import userEvent from "@testing-library/user-event";
+import { store } from "../../../state";
+import SignIn from "../sign-in";
 
-import SignIn from '../sign-in'
-import Home from '../../../../pages/index'
+it("button is disabled when invalid input is entered", async () => {
+  render(<SignIn />);
 
-const sum = (a:number, b:number) => a + b
+  const submitButton = screen.getByRole("button", { name: /submit/i });
+  const emailInput = screen.getByLabelText(/email/i);
+  const passwordInput = screen.getByLabelText(/heslo/i);
 
-it('test function', async() => {
-  const result = sum(1,1)
-  expect(result).toEqual(2)
-})
+  userEvent.clear(emailInput);
+  userEvent.clear(passwordInput);
+  userEvent.type(emailInput, "valid@email.com");
+  userEvent.type(passwordInput, "validPassword");
+  expect(submitButton).toBeEnabled();
 
-describe("HomePage", () => {
-    it("should render the heading", () => {
-      render(<Home />);
-  
-      const heading = screen.getByText(
-        /Testing Next.js With Jest and React Testing Library/i
-      );
-  
-      // we can only use toBeInTheDocument because it was imported
-      // in the jest.setup.js and configured in jest.config.js
-      expect(heading).toBeInTheDocument();
-    });
+  userEvent.clear(emailInput);
+  userEvent.type(emailInput, "invalid.email.com");
+  expect(submitButton).toBeDisabled();
+
+  userEvent.clear(emailInput);
+  userEvent.clear(passwordInput);
+  userEvent.type(emailInput, "valid@email.com");
+  userEvent.type(passwordInput, "thisIsTotollyInvalidPassword");
+  expect(submitButton).toBeDisabled();
+});
+
+it("clicking the submit button will return an user", async () => {
+  render(<SignIn />);
+  const submitButton = screen.getByRole("button", { name: /submit/i });
+  const emailInput = screen.getByLabelText(/email/i);
+  const passwordInput = screen.getByLabelText(/heslo/i);
+
+  userEvent.clear(emailInput);
+  userEvent.clear(passwordInput);
+  userEvent.type(emailInput, "valid@email.com");
+  userEvent.type(passwordInput, "validPassword");
+  expect(submitButton).toBeEnabled();
+
+  userEvent.click(submitButton);
+
+  const newsubmitButton = await screen.findByRole("button", {
+    name: /submit/i,
   });
 
-
-it('button is disabled in invalid email is entered', async() => {
-    render(<SignIn />);
-
-    const emailInput = screen.getByLabelText(/email/i)
-
-    userEvent.type(emailInput, 'invalid.email.com')
-
-    const submitButton = screen.getByRole('button', {name: /submit/i})
-
-    expect(submitButton).toBeDisabled()
-
-})
-
-it('button is disabled in invalid password is entered', async() => {})
-
-it('button is disabled in invalid email is entered', async() => {})
+  await waitFor(() => expect(store.getState().userLogin.user).not.toBeNull());
+});

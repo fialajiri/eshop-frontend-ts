@@ -59,8 +59,8 @@ const SignIn: React.FC = () => {
           errorText="Heslo musí mít maximálně 20 znaků"
           onInput={inputHandler}
         />
-      </form>
       <Button disabled={!formState.isValid}>Submit</Button>
+      </form>
     </div>
   );
 };

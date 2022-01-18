@@ -1,5 +1,6 @@
-import { UserActionTypes } from "../action-types/user-types";
-import { User, UserAction } from "../actions/user-actions";
+import { UserActionTypes } from "../../action-types/user-types";
+import { UserAction } from "../../actions/user-actions";
+import { UserDoc } from "../../../interfaces/models";
 import { Dispatch } from "redux";
 import axios from "axios";
 
@@ -10,10 +11,13 @@ export const login = (email: string, password: string) => {
     });
 
     try {
-      const { data }: { data: User } = await axios.post(`${process.env.BACKEND_URL}/api/users/login`, {
-        email,
-        password,
-      });
+      const { data }: { data: UserDoc } = await axios.post(
+        `${process.env.BACKEND_URL}/api/users/signin`,
+        {
+          email,
+          password,
+        }
+      );
       dispatch({ type: UserActionTypes.USER_LOGIN_SUCCESS, payload: data });
     } catch (err: any) {
       dispatch({

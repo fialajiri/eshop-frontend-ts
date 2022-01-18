@@ -21,8 +21,8 @@ const NavigationLinks: React.FC<NavigationLinksProps> = (props) => {
       <li className={getClass("/")}>
         <Link href="/">Domů</Link>
       </li>
-      <li className={getClass("/katalog")}>
-        <Link href="/products">Katalog</Link>
+      <li className={getClass("/produkty")}>
+        <Link href="/produkty">Katalog</Link>
       </li>
       <li className={getClass("/cart")}>
         <Button unstyled className="nav__button" onClick={props.openCart}>

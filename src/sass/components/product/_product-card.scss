@@ -1,0 +1,45 @@
+.product-card {
+  &__container {
+    padding: 2rem;
+    border-top: $border-line;
+    border-left: $border-line;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 50rem;
+    cursor: pointer;
+  }
+
+  &__info {    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__name,
+  &__price {
+    font-size: 2rem;
+    color: $color-dark;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    & span {
+      text-transform: none;
+    }
+  }
+
+  &__action{
+
+  }
+}
+
+.button__add-to-cart {
+  width: 100%;
+  
+}

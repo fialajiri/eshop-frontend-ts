@@ -1,10 +1,7 @@
-import { UserActionTypes } from "../action-types/user-types";
+importimport { UserActionTypes } from "../action-types/user-types";
+import { UserDoc } from "../../interfaces/models";
 
-export interface User {
-  id: string;
-  email: string;
-  isAdmin: boolean
-}
+
 
 export interface UserLoginRequestAction {
   type: UserActionTypes.USER_LOGIN_REQUEST;
@@ -12,7 +9,7 @@ export interface UserLoginRequestAction {
 
 export interface UserLoginSuccessAction {
   type: UserActionTypes.USER_LOGIN_SUCCESS;
-  payload: User;
+  payload: UserDoc;
 }
 
 export interface UserLoginErrorAction {
