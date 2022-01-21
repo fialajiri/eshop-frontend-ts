@@ -2,10 +2,11 @@ import { UserActionTypes } from "../../action-types/user-types";
 import { UserAction } from "../../actions/user-actions";
 import { UserDoc } from "../../../interfaces/models";
 import { Dispatch } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import axios from "axios";
 
 export const login = (email: string, password: string) => {
-  return async (dispatch: Dispatch<UserAction>) => {
+  return async (dispatch: ThunkDispatch<any, any, UserAction>) => {
     dispatch({
       type: UserActionTypes.USER_LOGIN_REQUEST,
     });
@@ -19,11 +20,13 @@ export const login = (email: string, password: string) => {
         }
       );
       dispatch({ type: UserActionTypes.USER_LOGIN_SUCCESS, payload: data });
+      
     } catch (err: any) {
       dispatch({
         type: UserActionTypes.USER_LOGIN_ERROR,
         payload: err.message,
       });
+      
     }
   };
 };

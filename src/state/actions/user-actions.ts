@@ -1,4 +1,4 @@
-importimport { UserActionTypes } from "../action-types/user-types";
+import { UserActionTypes } from "../action-types/user-types";
 import { UserDoc } from "../../interfaces/models";
 
 

@@ -1,11 +1,11 @@
 import { ProductActionTypes } from "../../action-types/product-types";
 import { ProductAction } from "../../actions/product-actions";
 import { ProductDoc } from "../../../interfaces/models";
-import { Dispatch } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import axios from "axios";
 
 export const listProducts = () => {
-  return async (dispatch: Dispatch<ProductAction>) => {
+  return async (dispatch:  ThunkDispatch<any, any, ProductAction>) => {
     dispatch({
       type: ProductActionTypes.PRODUCT_LIST_REQUEST,
     });

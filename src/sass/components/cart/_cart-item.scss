@@ -1,0 +1,94 @@
+.cart-item {
+  &__container {
+    
+    padding: 3rem 0rem 2rem 0rem;
+    display: grid;
+    column-gap: 2rem;
+    grid-template-columns: 12rem 2fr 1fr;
+    border-bottom: $border-line;
+  }
+
+  &__image {
+    position: relative;
+    width: 12rem;
+    height: 12rem;
+    border: $border-line;
+
+    & img {
+      display: flex;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__name {
+      font-family: $font-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: -1.5px;
+      font-size:3rem;
+      line-height: 1.1;
+
+    }
+
+    &__subtotal {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & button {
+      background-color: transparent;
+    }
+
+    &__remove {
+      border: 1px solid $color-line;
+      border-radius: 50%;
+    }
+
+    &__quantity {
+      position: relative;
+      padding: 0.2rem 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: $border-line;
+      border-radius: $border-radius;
+    }
+
+    &__quantity-text {
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
+.button__cart {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+
+  &__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__quantity {
+    padding: 0.3rem;
+    border: none;
+  }
+}

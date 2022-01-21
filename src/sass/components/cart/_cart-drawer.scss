@@ -1,0 +1,31 @@
+.cart-drawer {
+  position: fixed;
+  right: 0;
+  top: 7rem;
+  z-index: 100;
+  width: 50%;
+  background-color: $color-soft;
+  height: 100vh;
+  
+}
+
+.slide-in-right-enter {
+  transform: translateX(0100%);
+}
+
+.slide-in-right-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.slide-in-right-exit {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.slide-in-right-exit-active {
+  transform: translateX(0100%);
+  opacity: 0;
+  transition: all 200ms;
+}

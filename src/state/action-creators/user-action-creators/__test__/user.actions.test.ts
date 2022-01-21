@@ -1,23 +1,53 @@
-import axios from "axios";
-
 import { login } from "../user-login-action";
+import configureStore from "redux-mock-store";
+import thunk, { ThunkDispatch } from "redux-thunk";
+import { rest } from "msw";
+import { server } from "../../../../mocks/server";
+import { UserAction } from "../../../actions/user-actions";
+import { mockedUser } from "../../../../mocks/mock-data/mock-user";
 import { UserActionTypes } from "../../../action-types/user-types";
 
-describe("userActions", () => {
-  it("Login successfull, create USER_LOGIN_REQUEST and USER_LOGIN_SUCCESS", async () => {
-    const expected = [
+const setup = () => {
+  const initialState = {};
+  type State = typeof initialState;
+  const middlewares = [thunk];
+  const mockStore = configureStore<
+    State,
+    ThunkDispatch<State, any, UserAction>
+  >(middlewares);
+  const store = mockStore(initialState);
+
+  return store;
+};
+
+describe("user actions creators", () => {
+  it("load current user success", async () => {
+    const store = setup();
+
+    await store.dispatch(login("test@test.com", "123456"));
+
+    expect(store.getActions()).toEqual([
       { type: UserActionTypes.USER_LOGIN_REQUEST },
-      { type: UserActionTypes.USER_LOGIN_SUCCESS, payload: [] },
-    ];
+      { type: UserActionTypes.USER_LOGIN_SUCCESS, payload: mockedUser },
+    ]);
+  });
 
-    const mockedPost = jest
-      .spyOn(axios, "post")
-      .mockImplementation(() => Promise.resolve({ data: [] }));
+  it("load current user failed", async () => {
+    const store = setup();
+    const payload = "Request failed with status code 500";
 
-    const dispatch = jest.fn();
-    await login("test_user", "test@test.com")(dispatch);
+    // override default msw response for options endpoint with error response
+    server.resetHandlers(
+      rest.post("http://localhost:5000/api/users/signin", (req, res, ctx) =>
+        res(ctx.status(500))
+      )
+    );
 
-    expect(dispatch.mock.calls[0][0]).toEqual(expected[0]);
-    expect(dispatch.mock.calls[1][0]).toEqual(expected[1]);
+    await store.dispatch(login("test@test.com", "123456"));
+
+    expect(store.getActions()).toEqual([
+      { type: UserActionTypes.USER_LOGIN_REQUEST },
+      { type: UserActionTypes.USER_LOGIN_ERROR, payload: payload },
+    ]);
   });
 });

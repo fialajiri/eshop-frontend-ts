@@ -26,16 +26,15 @@ export interface ProductDoc {
 
 export interface CartDoc {
   id: string;
-  userId: string;
-  items: [
-    {
-      productId: string;
-      quantity: number;
-      price: number;
-      subTotal: number;
-    }
-  ];
-  total: number;
-  updatedAt: Date;
-  createdAt: Date;
+  userId?: string;
+  items?: {
+    productId: string;
+    name: string;
+    quantity: number;
+    price: number;
+    subTotal: number;
+  }[];
+  total?: number;
+  updatedAt: string;
+  createdAt: string;
 }

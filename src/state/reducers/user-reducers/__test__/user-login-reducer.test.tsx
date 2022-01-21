@@ -1,18 +1,24 @@
 import { UserActionTypes } from "../../../action-types/user-types";
-import { UserAction } from "../../../actions/user-actions";
 import {
-  userLoginReducer,
-  userLogininitialState,
+  userLoginReducer,  
   UserState,
 } from "../user-login-reducer";
 
 describe("testing userLoginReducer", () => {
-  it("should return the initial state", async () => {
+  it("return the previous state for unknown action type ", async () => {
+    const previousState: UserState = {
+      loading: true,
+      error: null,
+      user: null,
+    };
+
     //@ts-ignore
-    expect(userLoginReducer(undefined, {})).toEqual(userLogininitialState);
+    expect(userLoginReducer(previousState, { type: "unknown" })).toEqual(
+      previousState
+    );
   });
 
-  it("should handle a user login request properly ", async () => {
+  it("set loading to true for action type USER_LOGIN_REQUEST ", async () => {
     const previousState: UserState = {
       loading: false,
       error: null,
@@ -25,14 +31,14 @@ describe("testing userLoginReducer", () => {
       user: null,
     };
 
-    expect(
-      userLoginReducer(previousState, {
-        type: UserActionTypes.USER_LOGIN_REQUEST,
-      })
-    ).toEqual(expectedState);
+    const newState = userLoginReducer(previousState, {
+      type: UserActionTypes.USER_LOGIN_REQUEST,
+    });
+
+    expect(newState).toEqual(expectedState);
   });
 
-  it("should handler the error request properly", async () => {
+  it("return correct payload for action type USER_LOGIN_ERROR", async () => {
     const previousState: UserState = {
       loading: true,
       error: null,
@@ -45,31 +51,32 @@ describe("testing userLoginReducer", () => {
       user: null,
     };
 
-    expect(
-      userLoginReducer(previousState, {
-        type: UserActionTypes.USER_LOGIN_ERROR,
-        payload: ["Something went wrong", "Thats too bad"],
-      })
-    ).toEqual(expectedState);
+    const newState = userLoginReducer(previousState, {
+      type: UserActionTypes.USER_LOGIN_ERROR,
+      payload: ["Something went wrong", "Thats too bad"],
+    });
+
+    expect(newState).toEqual(expectedState);
   });
 
-  it("on successfull login it should set the user state", async () => {
+  it("return correct payload for action type USER_LOGIN_SUCCESS", async () => {
     const previousState: UserState = {
       loading: true,
       error: null,
       user: null,
     };
+
     const expectedState: UserState = {
       loading: false,
       error: null,
       user: { id: "123456789", email: "test@test.com", isAdmin: true },
     };
 
-    expect(
-      userLoginReducer(previousState, {
-        type: UserActionTypes.USER_LOGIN_SUCCESS,
-        payload: { id: "123456789", email: "test@test.com", isAdmin: true },
-      })
-    ).toEqual(expectedState);
+    const newState = userLoginReducer(previousState, {
+      type: UserActionTypes.USER_LOGIN_SUCCESS,
+      payload: { id: "123456789", email: "test@test.com", isAdmin: true },
+    });
+
+    expect(newState).toEqual(expectedState);
   });
 });
