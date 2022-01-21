@@ -4,11 +4,10 @@ import { CSSTransition } from "react-transition-group";
 
 interface CartDrawerProps {
   show: boolean;
-  onClick: () => void;
 }
 
 const CartDrawer: React.FC<CartDrawerProps> = (props) => {
-  const content: JSX.Element = (
+  const content = (
     <CSSTransition
       in={props.show}
       timeout={200}
@@ -16,7 +15,7 @@ const CartDrawer: React.FC<CartDrawerProps> = (props) => {
       mountOnEnter
       unmountOnExit
     >
-      <aside className="cart-drawer" onClick={props.onClick}>
+      <aside className="cart-drawer" >
         {props.children}
       </aside>
     </CSSTransition>

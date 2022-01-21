@@ -1,8 +1,8 @@
 import ProductList from "../../src/components/product/product-list";
-import { mockProducts } from "../../src/mocks/mock-data/mock-products";
+
 
 const AllProducts: React.FC = () => {
-  return <ProductList products={mockProducts} />;
+  return <ProductList />;
 };
 
 export default AllProducts;

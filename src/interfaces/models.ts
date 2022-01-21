@@ -24,17 +24,20 @@ export interface ProductDoc {
   createdAt?: Date;
 }
 
+export interface CartItemDoc {
+  product: string;
+  name: string;
+  quantity: number;
+  price: number;
+  subTotal: number;
+  image: string;
+}
+
 export interface CartDoc {
   id: string;
   userId?: string;
-  items?: {
-    productId: string;
-    name: string;
-    quantity: number;
-    price: number;
-    subTotal: number;
-  }[];
-  total?: number;
+  items: CartItemDoc[];
+  total: number;
   updatedAt: string;
   createdAt: string;
 }

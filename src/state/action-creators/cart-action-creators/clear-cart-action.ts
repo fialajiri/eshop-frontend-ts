@@ -3,24 +3,25 @@ import { CartActionTypes } from "../../action-types/cart-types";
 import { CartDoc } from "../../../interfaces/models";
 import { Dispatch } from "react";
 import axios from "axios";
+import { RootState } from "../..";
 
-export const getCart = () => {
-  return async (dispatch: Dispatch<CartAction>) => {
+export const clearCart = () => {
+  return async (dispatch: Dispatch<CartAction>, getState: () => RootState) => {
     dispatch({
       type: CartActionTypes.CART_REQUEST,
     });
 
     try {
-      const { data:cart }: { data: CartDoc } = await axios.get(
-        `${process.env.BACKEND_URL}/api/cart`
+      const cartId = getState().cartState.cart!.id;
+
+      const { data: cart }: { data: CartDoc } = await axios.put(
+        `${process.env.BACKEND_URL}/api/cart/clearcart/${cartId}`,
+        
       );
       dispatch({
         type: CartActionTypes.CART_UPDATE_SUCCESS,
         payload: cart,
       });
-
-      localStorage.setItem('cartId', JSON.stringify(cart.id))
-
     } catch (err: any) {
       dispatch({
         type: CartActionTypes.CART_ERROR,

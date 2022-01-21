@@ -3,38 +3,39 @@ import { ProductAction } from "../../actions/product-actions";
 import { ProductActionTypes } from "../../action-types/product-types";
 import { ProductDoc } from "../../../interfaces/models";
 
-export interface ProductListState {
+export interface ProductDetailsState {
   loading: boolean;
   error: string[] | null;
-  products: ProductDoc[] | null;
+  product: ProductDoc | null;
 }
 
-export const productListInitialState: ProductListState = {
+export const productDetailsInitialState: ProductDetailsState = {
   loading: false,
   error: null,
-  products: null,
+  product: null,
 };
 
-export const productListReducer = produce(
+export const productDetailsReducer = produce(
   (
-    state: ProductListState = productListInitialState,
+    state: ProductDetailsState = productDetailsInitialState,
     action: ProductAction
-  ): ProductListState => {
+  ): ProductDetailsState => {
     switch (action.type) {
-      case ProductActionTypes.PRODUCT_LIST_REQUEST:
+      case ProductActionTypes.PRODUCT_DETAILS_REQUEST:
         state.loading = true;
         return state;
-      case ProductActionTypes.PRODUCT_LIST_ERROR:
+      case ProductActionTypes.PRODUCT_DETAILS_ERROR:
         state.loading = false;
         state.error = action.payload;
         return state;
-      case ProductActionTypes.PRODUCT_LIST_SUCCESS:
+      case ProductActionTypes.PRODUCT_DETAILS_SUCCESS:
         state.loading = false;
-        state.products = action.payload;
+        state.product = action.payload;
         return state;
+
       default:
         return state;
     }
   },
-  productListInitialState
+  productDetailsInitialState
 );

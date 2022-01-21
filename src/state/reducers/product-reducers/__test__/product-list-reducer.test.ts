@@ -37,7 +37,8 @@ it("set an error upon receiving an action of type PRODUCT_LIST_ERROR", async () 
     type: ProductActionTypes.PRODUCT_LIST_ERROR,
     payload: payload,
   });
-  expect(newState).toEqual(previousState);
+  
+  expect(newState).toEqual(expectedState);
 });
 it("set list of products upon receiving ac action of type PRODUCT_LIST_REQUEST", async () => {
   const payload = mockProducts;
