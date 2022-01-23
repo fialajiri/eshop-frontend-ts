@@ -1,0 +1,16 @@
+.product-search-bar {
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;    
+    padding: 1.5rem 0;
+
+  }
+
+  &__text {
+      text-transform: uppercase;   
+      font-weight: 500;  
+}
+
+}

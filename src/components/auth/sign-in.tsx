@@ -7,7 +7,7 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_MAXLENGTH,
 } from "../../validators/validators";
-import { useForm } from "../../hooks/form-hook";
+import { useForm } from "../../hooks/use-form-hook";
 
 const SignIn: React.FC = () => {
   const { login } = useActions();

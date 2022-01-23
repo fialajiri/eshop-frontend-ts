@@ -1,8 +1,9 @@
-import ProductList from "../../src/components/product/product-list";
+
+import ProductCatalog from "../../src/components/product/product-catalog";
 
 
 const AllProducts: React.FC = () => {
-  return <ProductList />;
+  return <ProductCatalog />;
 };
 
 export default AllProducts;

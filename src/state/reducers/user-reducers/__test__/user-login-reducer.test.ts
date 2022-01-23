@@ -10,6 +10,7 @@ describe("testing userLoginReducer", () => {
       loading: true,
       error: null,
       user: null,
+      success:undefined
     };
 
     //@ts-ignore
@@ -23,12 +24,14 @@ describe("testing userLoginReducer", () => {
       loading: false,
       error: null,
       user: null,
+      success:undefined
     };
 
     const expectedState: UserState = {
       loading: true,
       error: null,
       user: null,
+      success:undefined
     };
 
     const newState = userLoginReducer(previousState, {
@@ -43,12 +46,14 @@ describe("testing userLoginReducer", () => {
       loading: true,
       error: null,
       user: null,
+      success:undefined
     };
 
     const expectedState: UserState = {
       loading: false,
       error: ["Something went wrong", "Thats too bad"],
       user: null,
+      success:undefined
     };
 
     const newState = userLoginReducer(previousState, {
@@ -64,12 +69,14 @@ describe("testing userLoginReducer", () => {
       loading: true,
       error: null,
       user: null,
+      success:undefined
     };
 
     const expectedState: UserState = {
       loading: false,
       error: null,
       user: { id: "123456789", email: "test@test.com", isAdmin: true },
+      success:undefined
     };
 
     const newState = userLoginReducer(previousState, {

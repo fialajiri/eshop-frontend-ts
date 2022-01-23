@@ -7,6 +7,7 @@ export interface UserDoc {
 }
 
 export interface CategoryDoc {
+  id: string;
   name: string;
   products: ProductDoc[] | string[];
 }

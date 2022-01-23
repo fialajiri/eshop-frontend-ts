@@ -5,3 +5,16 @@ export const mockedUser: UserDoc = {
   email: "jirik.fiala@post.cz",
   isAdmin: true,
 };
+
+export const mockUsers: UserDoc[] = [
+  {
+    id: "123",
+    email: "jirik.fiala@post.cz",
+    isAdmin: true,
+  },
+  {
+    id: "1234",
+    email: "test@test.com",
+    isAdmin: false,
+  }
+]

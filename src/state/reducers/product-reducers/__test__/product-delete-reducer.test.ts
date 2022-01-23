@@ -45,7 +45,7 @@ it("set an error upon receiving an action of type PRODUCT_DELETE_ERROR", async (
   expect(newState).toEqual(expectedState);
 });
 
-it("set product upon receiving an action of type PRODUCT_DELETE_SUCCESS", async () => {
+it("set success to true upon receiving an action of type PRODUCT_DELETE_SUCCESS", async () => {
   const payload = mockProducts[0];
   const previousState: ProductDeleteState = {
     loading: true,

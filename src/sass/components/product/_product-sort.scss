@@ -1,0 +1,30 @@
+.product-sort {
+    &__container {
+    }
+  
+    &__text {
+      &__container {
+        border-top: $border-line;
+        border-bottom: $border-line;
+      }
+  
+      padding: 1rem 4rem ;
+      width: 100%;
+      text-transform: uppercase;
+      font-weight: 500;
+      
+    }
+  
+    &__list {
+      padding: 0rem 4rem ;
+      list-style: none;
+  
+      &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+}

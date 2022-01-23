@@ -7,11 +7,17 @@ it("set loading to true upon receiving an action of type PRODUCT_LIST_REQUEST", 
     loading: false,
     error: null,
     products: null,
+    page: 0,
+    pages: 0,
+    category: undefined
   };
   const expectedState: ProductListState = {
     loading: true,
     error: null,
     products: null,
+    page: 0,
+    pages: 0,
+    category: undefined
   };
 
   const newState = productListReducer(previousState, {
@@ -26,11 +32,17 @@ it("set an error upon receiving an action of type PRODUCT_LIST_ERROR", async () 
     loading: true,
     error: null,
     products: null,
+    page: 0,
+    pages: 0,
+    category: undefined
   };
   const expectedState: ProductListState = {
     loading: false,
     error: payload,
     products: null,
+    page: 0,
+    pages: 0,
+    category: undefined
   };
 
   const newState = productListReducer(previousState, {
@@ -46,15 +58,26 @@ it("set list of products upon receiving ac action of type PRODUCT_LIST_REQUEST",
     loading: true,
     error: null,
     products: null,
+    page: 0,
+    pages: 0,
+    category: undefined
   };
   const expectedState: ProductListState = {
     loading: false,
     error: null,
     products: mockProducts,
+    page: 1,
+    pages: 1,
+    category: undefined
   };
 
   const newState = productListReducer(previousState, {
     type: ProductActionTypes.PRODUCT_LIST_SUCCESS,
-    payload: mockProducts,
+    payload: {
+      products: mockProducts,
+      page: 1,
+      pages: 1,
+      category: undefined
+    } 
   });
 });

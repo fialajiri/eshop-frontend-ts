@@ -7,7 +7,12 @@ export interface ProductListRequestAction {
 
 export interface ProductListSuccessAction {
   type: ProductActionTypes.PRODUCT_LIST_SUCCESS;
-  payload: ProductDoc[];
+  payload: {
+    products: ProductDoc[];
+    page: number;
+    pages: number;
+    category: string | undefined;
+  };
 }
 
 export interface ProductListErrorAction {
@@ -66,16 +71,16 @@ export interface ProductUpdateResetAction {
 }
 
 export interface ProductDeleteRequestAction {
-  type: ProductActionTypes.PRODUCT_DELETE_REQUEST
+  type: ProductActionTypes.PRODUCT_DELETE_REQUEST;
 }
 
 export interface ProductDeleteErrorAction {
-  type: ProductActionTypes.PRODUCT_DELETE_ERROR,
-  payload: string[]
+  type: ProductActionTypes.PRODUCT_DELETE_ERROR;
+  payload: string[];
 }
 
-export interface ProductDeleteSuccessAction{
-  type: ProductActionTypes.PRODUCT_DELETE_SUCCESS
+export interface ProductDeleteSuccessAction {
+  type: ProductActionTypes.PRODUCT_DELETE_SUCCESS;
 }
 
 export type ProductAction =
@@ -95,4 +100,4 @@ export type ProductAction =
   | ProductUpdateResetAction
   | ProductDeleteRequestAction
   | ProductDeleteErrorAction
-  | ProductDeleteSuccessAction
+  | ProductDeleteSuccessAction;

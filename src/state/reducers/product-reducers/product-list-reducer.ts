@@ -7,12 +7,18 @@ export interface ProductListState {
   loading: boolean;
   error: string[] | null;
   products: ProductDoc[] | null;
+  page:number ;
+  pages: number | null;
+  category: string | undefined
 }
 
 export const productListInitialState: ProductListState = {
   loading: false,
   error: null,
   products: null,
+  page: 0,
+  pages: 0,
+  category: undefined
 };
 
 export const productListReducer = produce(
@@ -30,7 +36,10 @@ export const productListReducer = produce(
         return state;
       case ProductActionTypes.PRODUCT_LIST_SUCCESS:
         state.loading = false;
-        state.products = action.payload;
+        state.products = action.payload.products;
+        state.page = action.payload.page;
+        state.pages = action.payload.pages;
+        state.category = action.payload.category
         return state;
       default:
         return state;

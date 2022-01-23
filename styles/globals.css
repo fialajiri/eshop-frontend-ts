@@ -576,4 +576,126 @@ body {
   width: 100%;
 }
 
+.catalog__heading {
+  border-bottom: 1px solid #d1c7a3;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 10rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 2rem 2rem 2rem;
+  letter-spacing: -8px;
+}
+.catalog__container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.catalog__container--top {
+  position: relative;
+}
+.catalog__container--top--sticky {
+  width: inherit;
+  position: sticky;
+  top: 7rem;
+}
+
+.product-filter__text {
+  padding: 1rem 4rem;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.product-filter__text__container {
+  border-top: 1px solid #d1c7a3;
+  border-bottom: 1px solid #d1c7a3;
+}
+.product-filter__text__container--sticky {
+  border-top: none;
+}
+.product-filter__list {
+  padding: 0rem 4rem;
+  list-style: none;
+  margin-bottom: 1rem;
+}
+.product-filter__list__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.product-filter__button {
+  margin-top: 1rem;
+  font-size: 1.22rem;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  color: #1f1f1f;
+  background-color: transparent;
+  border: none;
+}
+
+.product-search-bar__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+.product-search-bar__text {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.product-search__form {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d1c7a3;
+}
+.product-search__input {
+  border: none;
+  background-color: #ebe6d7;
+  font-style: inherit;
+  line-height: 1.6;
+  padding-left: 1rem;
+}
+.product-search__input::placeholder {
+  text-transform: uppercase;
+  color: #1f1f1f;
+  font-weight: 500;
+}
+.product-search__input:focus {
+  outline: none;
+}
+.product-search__button {
+  border: none;
+  background-color: #ebe6d7;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+.product-sort__text {
+  padding: 1rem 4rem;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.product-sort__text__container {
+  border-top: 1px solid #d1c7a3;
+  border-bottom: 1px solid #d1c7a3;
+}
+.product-sort__list {
+  padding: 0rem 4rem;
+  list-style: none;
+}
+.product-sort__list__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
 /*# sourceMappingURL=globals.css.map */

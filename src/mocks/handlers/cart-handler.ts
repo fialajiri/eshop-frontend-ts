@@ -36,14 +36,14 @@ export const cartHandlers = [
   ),
 
   rest.put(
-    `${process.env.BACKEND_URL}/api/cart/clearcart/${mockCart.id}`,
+    `${process.env.BACKEND_URL}/api/cart/clearcart/*`,
     (req, res, ctx) => {
       return res(ctx.json(mockEmptyCart));
     }
   ),
 
   rest.options(
-    `${process.env.BACKEND_URL}/api/cart/clearcart/${mockCart.id}`,
+    `${process.env.BACKEND_URL}/api/cart/clearcart/*`,
     (req, res, ctx) => {
       return res(ctx.json(""));
     }

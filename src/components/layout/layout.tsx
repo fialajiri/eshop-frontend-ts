@@ -9,6 +9,7 @@ const Layout: React.FC = (props) => {
 
   useEffect(() => {
     const cartId: string  = JSON.parse(localStorage.getItem("cartId") || '')
+    console.log('use Effecting')
 
     if (cartId !== '') {
       console.log(cartId)
@@ -16,7 +17,7 @@ const Layout: React.FC = (props) => {
     } else {
       getCart();
     }
-  });
+  }, []);
   return (
     <Fragment>
       <Header />

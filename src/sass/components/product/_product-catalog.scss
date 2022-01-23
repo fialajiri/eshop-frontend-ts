@@ -1,0 +1,33 @@
+.catalog {
+  &__heading {
+    
+    border-bottom: $border-line;
+    font-family: $font-serif;
+    font-size: 10rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 2rem 2rem 2rem;
+    letter-spacing: -8px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    &--top {
+      position: relative;
+    }
+
+    &--top--sticky {
+      width: inherit;
+      position: sticky;
+
+      top: 7rem;
+    }
+  }
+}
