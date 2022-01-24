@@ -1,24 +1,24 @@
 import produce from "immer";
 import { ProductAction } from "../../actions/product-actions";
 import { ProductActionTypes } from "../../action-types/product-types";
-import { ProductDoc } from "../../../interfaces/models";
+import { CategoryDoc, ProductDoc } from "../../../interfaces/models";
 
 export interface ProductListState {
   loading: boolean;
   error: string[] | null;
-  products: ProductDoc[] | null;
+  products: ProductDoc[];
   page:number ;
   pages: number | null;
-  category: string | undefined
+  category: CategoryDoc | null
 }
 
 export const productListInitialState: ProductListState = {
   loading: false,
   error: null,
-  products: null,
+  products: [],
   page: 0,
   pages: 0,
-  category: undefined
+  category: null
 };
 
 export const productListReducer = produce(
@@ -40,6 +40,24 @@ export const productListReducer = produce(
         state.page = action.payload.page;
         state.pages = action.payload.pages;
         state.category = action.payload.category
+        return state;
+      case ProductActionTypes.PRODUCT_LIST_SORT_PRICE_ASC:
+        state.products.sort((a, b) => a.price  - b.price)
+        return state;
+      case ProductActionTypes.PRODUCT_LIST_SORT_PRICE_DESC:
+        state.products.sort((a, b) => b.price - a.price)
+        return state;
+      case ProductActionTypes.PRODUCT_LIST_SORT_A_Z:
+        state.products.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()) )
+        return state
+      case ProductActionTypes.PRODUCT_LIST_SORT_Z_A:
+        state.products.sort((a,b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase()) )
+        return state
+      case ProductActionTypes.PRODUCT_LIST_SORT_LATEST:        
+        state.products.sort((a,b) => +new Date(b.createdAt) - +new Date(a.createdAt))
+        return state;
+      case ProductActionTypes.PRODUCT_LIST_SORT_OLDEST:        
+        state.products.sort((a,b) => +new Date(a.createdAt) - +new Date(b.createdAt!))
         return state;
       default:
         return state;

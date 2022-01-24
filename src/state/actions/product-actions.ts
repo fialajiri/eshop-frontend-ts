@@ -1,5 +1,5 @@
 import { ProductActionTypes } from "../action-types/product-types";
-import { ProductDoc } from "../../interfaces/models";
+import { CategoryDoc, ProductDoc } from "../../interfaces/models";
 
 export interface ProductListRequestAction {
   type: ProductActionTypes.PRODUCT_LIST_REQUEST;
@@ -11,13 +11,37 @@ export interface ProductListSuccessAction {
     products: ProductDoc[];
     page: number;
     pages: number;
-    category: string | undefined;
+    category: CategoryDoc | null;
   };
 }
 
 export interface ProductListErrorAction {
   type: ProductActionTypes.PRODUCT_LIST_ERROR;
   payload: string[];
+}
+
+export interface ProductListSortPriceAscAction {
+  type: ProductActionTypes.PRODUCT_LIST_SORT_PRICE_ASC
+}
+
+export interface ProductListSortPriceDescAction {
+  type: ProductActionTypes.PRODUCT_LIST_SORT_PRICE_DESC
+}
+
+export interface ProductListSortAzAction {
+  type: ProductActionTypes.PRODUCT_LIST_SORT_A_Z
+}
+
+export interface ProductListSortZaAction {
+  type: ProductActionTypes.PRODUCT_LIST_SORT_Z_A
+}
+
+export interface ProductListSortLatestAction {
+  type: ProductActionTypes.PRODUCT_LIST_SORT_LATEST
+}
+
+export interface ProductListSortOldestAction {
+  type: ProductActionTypes.PRODUCT_LIST_SORT_OLDEST
 }
 
 export interface ProductDetailsRequestAction {
@@ -100,4 +124,10 @@ export type ProductAction =
   | ProductUpdateResetAction
   | ProductDeleteRequestAction
   | ProductDeleteErrorAction
-  | ProductDeleteSuccessAction;
+  | ProductDeleteSuccessAction
+  | ProductListSortPriceAscAction
+  | ProductListSortPriceDescAction
+  | ProductListSortAzAction
+  | ProductListSortZaAction
+  | ProductListSortLatestAction
+  | ProductListSortOldestAction

@@ -45,8 +45,7 @@ it("delete product failed", async () => {
   const store = setupMockStore();
 
   await store.dispatch(deleteProduct(mockProducts[0].id));
-
-  console.log(store.getActions())
+  
 
   expect(store.getActions()).toEqual([
     { type: ProductActionTypes.PRODUCT_DELETE_REQUEST },

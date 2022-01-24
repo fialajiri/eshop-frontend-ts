@@ -698,4 +698,59 @@ body {
   gap: 1rem;
 }
 
+.form__container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form__heading {
+  font-size: 3rem;
+}
+.form__inputs {
+  width: 60rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}
+
+.product-insert__name {
+  grid-column: 1/-1;
+}
+.product-insert__price {
+  grid-column: 1/2;
+}
+.product-insert__quantity {
+  grid-column: 2/3;
+}
+.product-insert__description {
+  grid-column: 1/-1;
+}
+.product-insert__image-upload {
+  grid-column: 1/-1;
+}
+.product-insert__submit-button {
+  grid-column: 1/-1;
+}
+.product-insert__categories {
+  padding: 1.6rem 0;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.product-insert__categories option {
+  border-radius: 0.5rem;
+  font: inherit;
+  font-size: 1.6rem;
+  background-color: #f9f9f9;
+  padding: 0.6rem 1rem;
+}
+.product-insert__categories option:hover,
+.product-insert__categories option:focus,
+.product-insert__categories option:active,
+.product-insert__categories option:checked {
+  background: #ebe6d7;
+}
+
 /*# sourceMappingURL=globals.css.map */

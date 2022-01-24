@@ -1,12 +1,12 @@
 import { ProductActionTypes } from "../../action-types/product-types";
 import { ProductAction } from "../../actions/product-actions";
-import { ProductDoc } from "../../../interfaces/models";
+import { CategoryDoc, ProductDoc } from "../../../interfaces/models";
 import axios from "axios";
 import { Dispatch } from "react";
 
 export const listProducts = (
   keyword: string = "",
-  category: string = "",
+  categoryId: string = "",
   pageNumber: number = 1
 ) => {
   return async (dispatch: Dispatch<ProductAction>) => {
@@ -16,17 +16,19 @@ export const listProducts = (
 
     try {
       const {
-        data: { products, page, pages, categoryName },
+        data: { products, page, pages, category },
       }: {
         data: {
           products: ProductDoc[];
           page: number;
           pages: number;
-          categoryName: string;
+          category: CategoryDoc | null;
         };
       } = await axios.get(
-        `${process.env.BACKEND_URL}/api/products?keyword=${keyword}&category=${category}&pageNumber=${pageNumber}`
+        `${process.env.BACKEND_URL}/api/products?keyword=${keyword}&categoryId=${categoryId}&pageNumber=${pageNumber}`
       );
+
+      console.log(category)
       
       dispatch({
         type: ProductActionTypes.PRODUCT_LIST_SUCCESS,
@@ -34,7 +36,7 @@ export const listProducts = (
           products,
           page,
           pages,
-          category: categoryName,
+          category,
         },
       });
     } catch (err: any) {

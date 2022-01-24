@@ -1,20 +1,26 @@
 import Button from "../ui-elements/button"
+import { useDispatch } from "react-redux";
+import { sortProducts } from "../../state/action-creators/product-action-creators/product-sort-action";
+import { SortBY } from "../../interfaces/sort-enum";
 
-export interface ProductSortProps {
-    onSort: (action: string) => void
-}
 
-const ProductSort:React.FC<ProductSortProps> = (props) => {
+
+const ProductSort:React.FC = () => {
+
+  const dispatch = useDispatch()
+  const onSortHandler = (sortBy: SortBY) => {
+    dispatch(sortProducts(sortBy))
+  }
 
     return (
         <div className="product-sort__container">
           <div className="product-sort__text__container">
-            <h2 className="product-sort__text">SORT BY</h2>
+            <h2 className="product-sort__text">Řadit podle</h2>
           </div>
           <ul className="product-sort__list">
             <li>
               <Button
-                onClick={props.onSort.bind(this, "price-ascending")}
+                onClick={onSortHandler.bind(this, SortBY.PRICE_DESCENDING)}
                 className="product-filter__button"
                 unstyled
               >
@@ -23,7 +29,7 @@ const ProductSort:React.FC<ProductSortProps> = (props) => {
             </li>
             <li>
               <Button
-                onClick={props.onSort.bind(this, "price-descending")}
+                onClick={onSortHandler.bind(this, SortBY.PRICE_ASCENDING)}
                 className="product-filter__button"
                 unstyled
               >
@@ -32,7 +38,7 @@ const ProductSort:React.FC<ProductSortProps> = (props) => {
             </li>
             <li>
               <Button
-                onClick={props.onSort.bind(this, "a-z")}
+                onClick={onSortHandler.bind(this, SortBY.A_Z)}
                 className="product-filter__button"
                 unstyled
               >
@@ -41,7 +47,7 @@ const ProductSort:React.FC<ProductSortProps> = (props) => {
             </li>
             <li>
               <Button
-                onClick={props.onSort.bind(this, "z-a")}
+                onClick={onSortHandler.bind(this, SortBY.Z_A)}
                 className="product-filter__button"
                 unstyled
               >
@@ -50,7 +56,7 @@ const ProductSort:React.FC<ProductSortProps> = (props) => {
             </li>
             <li>
               <Button
-                onClick={props.onSort.bind(this, "latest")}
+                onClick={onSortHandler.bind(this, SortBY.LATEST)}
                 className="product-filter__button"
                 unstyled
               >
@@ -59,7 +65,7 @@ const ProductSort:React.FC<ProductSortProps> = (props) => {
             </li>
             <li>
               <Button
-                onClick={props.onSort.bind(this, "oldest")}
+                onClick={onSortHandler.bind(this, SortBY.OLDEST)}
                 className="product-filter__button"
                 unstyled
               >

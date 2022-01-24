@@ -1,5 +1,5 @@
 import { UserActionTypes } from "../action-types/user-types";
-import { UserDoc } from "../../interfaces/models";
+import { UserDetailsDoc, UserDoc } from "../../interfaces/models";
 
 export interface UserLoginRequestAction {
   type: UserActionTypes.USER_LOGIN_REQUEST;
@@ -13,6 +13,10 @@ export interface UserLoginSuccessAction {
 export interface UserLoginErrorAction {
   type: UserActionTypes.USER_LOGIN_ERROR;
   payload: string[];
+}
+
+export interface UserLoginLogoutAction {
+  type: UserActionTypes.USER_LOGIN_LOGOUT
 }
 
 export interface UserRegisterRequestAction {
@@ -35,7 +39,7 @@ export interface UserDetailsRequestAction {
 
 export interface UserDetailsSuccessAction {
   type: UserActionTypes.USER_DETAILS_SUCCESS;
-  payload: UserDoc;
+  payload: UserDetailsDoc;
 }
 
 export interface UserDetailsErrorAction {
@@ -53,7 +57,7 @@ export interface UserUpdateProfileRequestAction {
 
 export interface UserUpdateProfileSuccessAction {
   type: UserActionTypes.USER_UPDATE_PROFILE_SUCCESS;
-  payload: UserDoc;
+  payload: UserDetailsDoc;
 }
 
 export interface UserUpdateProfileErrorAction {
@@ -102,7 +106,7 @@ export interface UserUpdateRequestAction {
 
 export interface UserUpdateSuccessAction {
   type: UserActionTypes.USER_UPDATE_SUCCESS;
-  payload: UserDoc;
+ 
 }
 
 export interface UserUpdateErrorAction {
@@ -114,10 +118,29 @@ export interface UserUpdateResetAction {
   type: UserActionTypes.USER_UDPATE_RESET;
 }
 
+export interface UserCurrentRequestAction {
+  type: UserActionTypes.USER_CURRENT_REQUEST;
+}
+
+export interface UserCurrentErrorAction {
+  type: UserActionTypes.USER_CURRENT_ERROR;
+  payload: string[];
+}
+
+export interface UserCurrentSuccessAction {
+  type: UserActionTypes.USER_CURRENT_SUCCESS;
+  payload: UserDoc;
+}
+
+export interface UserCurrentResetAction {
+  type: UserActionTypes.USER_CURRENT_RESET;
+}
+
 export type UserAction =
   | UserLoginRequestAction
   | UserLoginSuccessAction
   | UserLoginErrorAction
+  | UserLoginLogoutAction
   | UserRegisterRequestAction
   | UserRegisterErrorAction
   | UserRegisterSuccessAction
@@ -139,4 +162,8 @@ export type UserAction =
   | UserUpdateRequestAction
   | UserUpdateSuccessAction
   | UserUpdateErrorAction
-  | UserUpdateResetAction;
+  | UserUpdateResetAction
+  | UserCurrentRequestAction
+  | UserCurrentErrorAction
+  | UserCurrentSuccessAction
+  | UserCurrentResetAction;

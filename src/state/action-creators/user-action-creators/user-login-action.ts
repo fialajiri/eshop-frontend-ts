@@ -2,11 +2,10 @@ import { UserActionTypes } from "../../action-types/user-types";
 import { UserAction } from "../../actions/user-actions";
 import { UserDoc } from "../../../interfaces/models";
 import { Dispatch } from "redux";
-import { ThunkDispatch } from "redux-thunk";
 import axios from "axios";
 
 export const login = (email: string, password: string) => {
-  return async (dispatch: ThunkDispatch<any, any, UserAction>) => {
+  return async (dispatch: Dispatch<UserAction>) => {
     dispatch({
       type: UserActionTypes.USER_LOGIN_REQUEST,
     });

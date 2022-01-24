@@ -11,6 +11,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useActions();
+  
 
   const increaseQuantityHandler = () => {
     console.log("clicked");

@@ -6,13 +6,13 @@ import { CategoryDoc } from "../../../interfaces/models";
 export interface CategoryListState {
   loading: boolean;
   error: string[] | null;
-  categories: CategoryDoc[] | null;
+  categories: CategoryDoc[];
 }
 
 export const categoryListInitialState: CategoryListState = {
   loading: false,
   error: null,
-  categories: null,
+  categories: [],
 };
 
 export const categoryListReducer = produce(

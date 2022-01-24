@@ -6,12 +6,12 @@ it("set loading to true upon receiving an action of type CATEGORY_LIST_REQUEST",
   const previousState: CategoryListState = {
     loading: false,
     error: null,
-    categories: null,
+    categories: [],
   };
   const expectedState: CategoryListState = {
     loading: true,
     error: null,
-    categories: null,
+    categories: [],
   };
 
   const newState = categoryListReducer(previousState, {
@@ -25,12 +25,12 @@ it("set an error upon receiving an action of type CATEGORY_LIST_ERROR", async ()
   const previousState: CategoryListState = {
     loading: true,
     error: null,
-    categories: null,
+    categories: [],
   };
   const expectedState: CategoryListState = {
     loading: false,
     error: payload,
-    categories: null,
+    categories: [],
   };
 
   const newState = categoryListReducer(previousState, {
@@ -45,7 +45,7 @@ it("set list of CATEGORYs upon receiving ac action of type CATEGORY_LIST_REQUEST
   const previousState: CategoryListState = {
     loading: true,
     error: null,
-    categories: null,
+    categories: [],
   };
   const expectedState: CategoryListState = {
     loading: false,

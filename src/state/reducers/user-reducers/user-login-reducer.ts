@@ -34,6 +34,8 @@ export const userLoginReducer = produce(
         state.loading = false;
         state.user = action.payload;
         return state;
+      case UserActionTypes.USER_LOGIN_LOGOUT:
+        return userLogininitialState
 
       default:
         return state;

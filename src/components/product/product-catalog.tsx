@@ -9,44 +9,41 @@ import LoadingSpinner from "../ui-elements/loading-spinner";
 import { useElementOnScreen } from "../../hooks/use-element-on-screen";
 
 const ProductCatalog: React.FC = () => {
-  const {containerRef, isVisible} = useElementOnScreen({
+  const { containerRef, isVisible } = useElementOnScreen({
     root: null,
     rootMargin: "-100px",
     threshold: 0,
   });
-  const {listProducts} = useActions();
-  const {loading, error, products} = useTypedSelector(state =>state.productList)
+  const { listProducts, listCategories } = useActions();
+  const { loading, error, products } = useTypedSelector(
+    (state) => state.productList
+  );
+
   const { category } = useTypedSelector((state) => state.productList);
-  const categories = ["židle", "dřevo", "nábytek"];
-  
 
   useEffect(() => {
-    listProducts()
-  }, [])
+    listProducts();
+    listCategories();
+  }, []);
 
-  if (loading || !products){
-    return <LoadingSpinner asOverlay />
+  if (loading || !products) {
+    return <LoadingSpinner asOverlay />;
   }
-
-
 
   return (
     <div className="base__container">
-      <h1 className="catalog__heading">{category ? category : "Vše"}</h1>
+      <h1 className="catalog__heading">{category ? category.name : "Vše"}</h1>
 
       <ProductSearchPanel containerRef={containerRef} />
 
       <div className="catalog__container">
         <div className="catalog__container--top">
           <div className={isVisible ? "" : "catalog__container--top--sticky"}>
-            <ProductFilter
-              categories={categories}             
-              isVisible={isVisible}
-            />
-            {/* <ProductSort  /> */}
+            <ProductFilter isVisible={isVisible} />
+            <ProductSort  />
           </div>
         </div>
-        <ProductList  />
+        <ProductList />
       </div>
     </div>
   );

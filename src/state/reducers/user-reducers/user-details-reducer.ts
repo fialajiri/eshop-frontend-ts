@@ -1,21 +1,26 @@
 import { UserAction } from "../../actions/user-actions";
 import { UserActionTypes } from "../../action-types/user-types";
 import produce from "immer";
-import { UserDoc } from "../../../interfaces/models";
+import { UserDetailsDoc, UserDoc } from "../../../interfaces/models";
 import { UserState } from "./user-login-reducer";
 
-export const userDetailsInitialState: UserState = {
+export interface UserDetailsState {
+  loading: boolean;
+  error: string[] | null;
+  userDetail: UserDetailsDoc | null;
+}
+
+export const userDetailsInitialState: UserDetailsState = {
   loading: false,
   error: null,
-  user: null,
-  success: undefined,
+  userDetail: null,
 };
 
 export const userDetailsReducer = produce(
   (
-    state: UserState = userDetailsInitialState,
+    state: UserDetailsState = userDetailsInitialState,
     action: UserAction
-  ): UserState => {
+  ): UserDetailsState => {
     switch (action.type) {
       case UserActionTypes.USER_DETAILS_REQUEST:
         state.loading = true;
@@ -26,8 +31,10 @@ export const userDetailsReducer = produce(
         return state;
       case UserActionTypes.USER_DETAILS_SUCCESS:
         state.loading = false;
-        state.user = action.payload;
+        state.userDetail = action.payload;
         return state;
+      case UserActionTypes.USER_DETAILS_RESET:
+        return userDetailsInitialState;
       default:
         return state;
     }
