@@ -1,0 +1,26 @@
+.multiple-image-upload {
+    &__container {
+      padding: 2rem 0;
+      border: $border-line;
+      border-radius: $border-radius;
+      margin-bottom: 2rem;
+    }
+  
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+  
+      &__preview {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 3rem;
+        justify-content: center;
+      }
+  
+      &__button {
+        align-self: center;
+      }
+    }
+  }

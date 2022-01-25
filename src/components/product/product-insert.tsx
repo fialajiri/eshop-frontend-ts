@@ -6,6 +6,7 @@ import Input from "../form-elements/input";
 import LoadingSpinner from "../ui-elements/loading-spinner";
 import { useForm } from "../../hooks/use-form-hook";
 import { CreateProductData } from "../../state/action-creators/product-action-creators";
+import MultipleImageUpload from "../form-elements/multiple-image-upload";
 import {
   VALIDATOR_MAXLENGTH,
   VALIDATOR_REQUIRE,
@@ -14,12 +15,13 @@ import {
 } from "../../validators/validators";
 
 const InsertProduct: React.FC = () => {
-  const [selectedCategories, setSelectedCategories] = useState<
-    Map<string, boolean>
-  >(new Map());
-  const { loading, error, categories } = useTypedSelector(
-    (state) => state.categoryList
+  const [selectedCategories, setSelectedCategories] = useState<Map<string, boolean>>(
+    new Map()
   );
+  const { loading, error, categories } = useTypedSelector((state) => state.categoryList);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [imagesValid, setImagesValid] = useState<boolean>(false);
+
   const { listCategories, createProduct } = useActions();
   const [formState, inputHandler] = useForm(
     {
@@ -39,10 +41,6 @@ const InsertProduct: React.FC = () => {
         value: "",
         isValid: false,
       },
-      images: {
-        value: "",
-        isValid: false,
-      },
     },
     false
   );
@@ -58,17 +56,18 @@ const InsertProduct: React.FC = () => {
       if (value) selectedCategoriesId.push(key);
     }
 
+    console.log(selectedFiles);
+
     const newProduct: CreateProductData = {
       name: formState.inputs.name.value,
       description: formState.inputs.description.value,
       price: parseInt(formState.inputs.price.value),
       countInStock: parseInt(formState.inputs.quantity.value),
-      image: formState.inputs.images.value,
+      images: selectedFiles,
       categories: selectedCategoriesId,
     };
 
     createProduct(newProduct);
-    
   };
 
   const setCategoryCheckedHandler = (
@@ -77,7 +76,6 @@ const InsertProduct: React.FC = () => {
   ) => {
     const isChecked = event.target.checked;
     setSelectedCategories((map) => new Map(map.set(categoryId, isChecked)));
-   
   };
 
   if (loading) {
@@ -118,11 +116,7 @@ const InsertProduct: React.FC = () => {
           element="input"
           label="Cena"
           type="number"
-          validators={[
-            VALIDATOR_REQUIRE(),
-            VALIDATOR_NUMBER(),
-            VALIDATOR_MIN(0),
-          ]}
+          validators={[VALIDATOR_REQUIRE(), VALIDATOR_NUMBER(), VALIDATOR_MIN(0)]}
           errorText="Zadejte prosím kladné číslo."
           onInput={inputHandler}
         />
@@ -132,11 +126,7 @@ const InsertProduct: React.FC = () => {
           element="input"
           label="Množství"
           type="number"
-          validators={[
-            VALIDATOR_REQUIRE(),
-            VALIDATOR_NUMBER(),
-            VALIDATOR_MIN(0),
-          ]}
+          validators={[VALIDATOR_REQUIRE(), VALIDATOR_NUMBER(), VALIDATOR_MIN(0)]}
           errorText="Zadejte prosím kladné číslo."
           onInput={inputHandler}
         />
@@ -150,15 +140,15 @@ const InsertProduct: React.FC = () => {
           errorText="Název musí mít maximálně 500 znaků."
           onInput={inputHandler}
         />
-        <Input
+
+        <MultipleImageUpload
+          maxFiles={4}
+          setImages={setSelectedFiles}
+          errorText="Vyberte maximálně 4 obrázky"
+          inputId="images"
+          isValid={imagesValid}          
+          setIsValid={setImagesValid}
           className="product-insert__image-upload"
-          id="images"
-          element="input"
-          label="Image"
-          type="text"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Název musí mít maximálně 75 znaků."
-          onInput={inputHandler}
         />
 
         {categoryCheckboxes}

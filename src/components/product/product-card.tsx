@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         onClick={() => router.push("/products/" + product.id)}
       >
         <Image
-          src={product.image[0]}
+          src={`${process.env.IMAGE_DOMAIN}/${product.image[0]}`}
           layout="fill"
           objectFit="cover"
           alt={product.name}

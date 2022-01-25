@@ -11,6 +11,8 @@ export const mockProducts: ProductDoc[] = [
     price: 13999,
     countInStock: 10,
     availability: 10,
+    createdAt: new Date("2014-04-03"),
+    updatedAt: new Date("2014-04-03"),
   },
   {
     id: "2",
@@ -22,6 +24,8 @@ export const mockProducts: ProductDoc[] = [
     price: 2999,
     countInStock: 5,
     availability: 3,
+    createdAt: new Date("2014-04-03"),
+    updatedAt: new Date("2014-04-03"),
   },
   {
     id: "3",
@@ -33,6 +37,8 @@ export const mockProducts: ProductDoc[] = [
     price: 9999,
     countInStock: 3,
     availability: 3,
+    createdAt: new Date("2014-04-03"),
+    updatedAt: new Date("2014-04-03"),
   },
   {
     id: "4",
@@ -44,6 +50,8 @@ export const mockProducts: ProductDoc[] = [
     price: 15999,
     countInStock: 10,
     availability: 10,
+    createdAt: new Date("2014-04-03"),
+    updatedAt: new Date("2014-04-03"),
   },
   {
     id: "5",
@@ -55,6 +63,8 @@ export const mockProducts: ProductDoc[] = [
     price: 19999,
     countInStock: 10,
     availability: 10,
+    createdAt: new Date("2014-04-03"),
+    updatedAt: new Date("2014-04-03"),
   },
   {
     id: "6",
@@ -66,5 +76,7 @@ export const mockProducts: ProductDoc[] = [
     price: 3999,
     countInStock: 10,
     availability: 10,
+    createdAt: new Date("2014-04-03"),
+    updatedAt: new Date("2014-04-03"),
   },
 ];
