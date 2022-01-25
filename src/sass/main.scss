@@ -17,6 +17,9 @@
 @import 'components/ui-elements/notification';
 @import 'components/ui-elements/button';
 @import 'components/ui-elements/backdrop';
+@import 'components/ui-elements/loading-spinner';
+@import 'components/ui-elements/error_modal';
+@import 'components/ui-elements/modal';
 
 @import 'components/auth/sign-in';
 
@@ -32,3 +35,8 @@
 @import 'components/product/product-search-panel';
 @import 'components/product/product-sort';
 @import 'components/product/product-insert';
+@import 'components/product/product-details-gallery';
+@import 'components/product/product-details-info';
+@import 'components/product/product-details-navigation';
+@import 'components/product/product-details';
+

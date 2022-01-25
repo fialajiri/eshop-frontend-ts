@@ -1,0 +1,60 @@
+.modal {
+  z-index: 100;
+  position: fixed;
+  top: 22vh;
+  left: 10%;
+  width: 80%;
+  background: $color-soft;
+  box-shadow: $shadow-dark;
+  border-radius: $border-radius;
+
+  &__header {
+    width: 100%;
+    padding: 1rem;
+    background-color: $color-soft;
+    color: $color-decor;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    
+
+    & h2 {
+      text-transform: uppercase;
+      text-align: center;      
+      margin: 0.5rem;
+      color: $color-dark;
+    }
+  }
+
+  &__content {
+    padding: 1rem 0.5rem;
+  }
+
+  &__footer {
+    padding: 1rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &-enter {
+    transform: translateY(-10rem);
+    opacity: 0;
+  }
+
+  &-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 200ms;
+  }
+
+  &-exit {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &-exit-active {
+    transform: translateY(-10rem);
+    opacity: 0;
+    transition: all 200ms;
+  }
+}

@@ -1,5 +1,9 @@
+import ProductDetails from "../../src/components/product/product-details";
+
 const ProductDetailsPage: React.FC = () => {
-  return <ProductDetail />;
+  return <ProductDetails />
 };
 
 export default ProductDetailsPage;
+
+

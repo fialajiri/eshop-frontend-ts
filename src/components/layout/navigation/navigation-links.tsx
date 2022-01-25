@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { useTypedSelector } from "../../../hooks/use-types-selector";
 import { useRouter } from "next/router";
+import { ShoppingCartSimple, User } from "phosphor-react";
 
-import Button from "../../ui-elements/button";
 
 interface NavigationLinksProps {
   openCart: () => void;
@@ -9,10 +10,14 @@ interface NavigationLinksProps {
 
 const NavigationLinks: React.FC<NavigationLinksProps> = (props) => {
   const router = useRouter();
+  const {user} = useTypedSelector(state => state.userLogin)
+
+  const userLink = (user && user.isAdmin)? '/admin/dashboard': user? '/user/profile' : 'user/signin'
+
+  
 
   const getClass = (pathName: string): string => {
-    if (router.pathname === pathName)
-      return "nav__list__item nav__list__item--active";
+    if (router.pathname === pathName) return "nav__list__item nav__list__item--active";
     return "nav__list__item";
   };
 
@@ -25,12 +30,12 @@ const NavigationLinks: React.FC<NavigationLinksProps> = (props) => {
         <Link href="/produkty">Katalog</Link>
       </li>
       <li className={getClass("/cart")}>
-        <Button unstyled className="nav__button" onClick={props.openCart}>
-          Košík
-        </Button>
+        <ShoppingCartSimple weight="light" className='nav__list__icon' onClick={props.openCart} />
       </li>
       <li className={getClass("/login")}>
-        <Link href="/user/signin">Přihlásit se</Link>
+        <Link href={userLink}>
+          <User weight="light" className='nav__list__icon' />
+        </Link>
       </li>
     </ul>
   );

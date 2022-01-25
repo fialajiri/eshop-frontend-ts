@@ -1,0 +1,9 @@
+.product-detail {
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        
+    }
+}

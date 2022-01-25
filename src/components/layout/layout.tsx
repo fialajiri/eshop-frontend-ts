@@ -8,11 +8,12 @@ const Layout: React.FC = (props) => {
   const { getCart, getCartById } = useActions();
 
   useEffect(() => {
-    const cartId: string  = JSON.parse(localStorage.getItem("cartId") || '')
-    console.log('use Effecting')
+    // let cartId = ''
+    const cartId: string = JSON.parse(localStorage.getItem("cartId") || "");
+    console.log("use Effecting");
 
-    if (cartId !== '') {
-      console.log(cartId)
+    if (cartId !== "") {
+      console.log(cartId);
       getCartById(cartId);
     } else {
       getCart();

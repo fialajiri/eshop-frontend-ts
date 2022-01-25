@@ -33,17 +33,22 @@ export interface CategoryDoc {
   products: ProductDoc[] | string[];
 }
 
+export interface CategoryInProductDoc{
+  id: string;
+  name: string;
+}
+
 export interface ProductDoc {
   id: string;
   name: string;
   image: string[];
-  categories: CategoryDoc[] | string[];
+  categories: CategoryInProductDoc [];
   description: string;
   price: number;
   countInStock: number;
   availability: number;
-  updatedAt: Date;
-  createdAt: Date;
+  updatedAt?: Date;
+  createdAt?: Date;
 }
 
 export interface CartItemDoc {

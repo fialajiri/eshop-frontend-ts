@@ -1,0 +1,36 @@
+.product-detail-info{
+
+    &__container {
+        grid-column: 2 /3;
+        padding: 14rem 8rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+
+    }
+
+    &__name {
+        font-family: $font-serif;
+        font-size: 3rem;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        font-weight: 500;
+
+    }
+
+    &__description {
+
+    }
+
+    &__price {
+        font-size: 1.6rem;
+        font-weight: 500;
+
+    }
+
+    &__button {
+        padding: 1rem 2rem !important;
+    }
+}

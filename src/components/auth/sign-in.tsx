@@ -1,17 +1,11 @@
 import { useActions } from "../../hooks/use-actions";
-import { useTypedSelector } from "../../hooks/use-types-selector";
-
 import Input from "../form-elements/input";
 import Button from "../ui-elements/button";
-import {
-  VALIDATOR_EMAIL,
-  VALIDATOR_MAXLENGTH,
-} from "../../validators/validators";
+import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH } from "../../validators/validators";
 import { useForm } from "../../hooks/use-form-hook";
 
 const SignIn: React.FC = () => {
   const { login } = useActions();
-  const { user } = useTypedSelector((state) => state.userLogin);
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -59,7 +53,7 @@ const SignIn: React.FC = () => {
           errorText="Heslo musí mít maximálně 20 znaků"
           onInput={inputHandler}
         />
-      <Button disabled={!formState.isValid}>Submit</Button>
+        <Button disabled={!formState.isValid}>Submit</Button>
       </form>
     </div>
   );

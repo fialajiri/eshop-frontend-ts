@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTypedSelector } from "../../hooks/use-types-selector";
+import { useRouter } from "next/router";
 import ProductList from "./product-list";
 import { useActions } from "../../hooks/use-actions";
 import ProductSort from "./product-sort";
@@ -8,7 +9,14 @@ import ProductFilter from "./product-filter";
 import LoadingSpinner from "../ui-elements/loading-spinner";
 import { useElementOnScreen } from "../../hooks/use-element-on-screen";
 
+
+
 const ProductCatalog: React.FC = () => {
+  const router = useRouter();
+  const { categoryId } = router.query as { categoryId: string };
+  console.log(categoryId)
+  
+
   const { containerRef, isVisible } = useElementOnScreen({
     root: null,
     rootMargin: "-100px",
@@ -22,7 +30,7 @@ const ProductCatalog: React.FC = () => {
   const { category } = useTypedSelector((state) => state.productList);
 
   useEffect(() => {
-    listProducts();
+    listProducts('', categoryId);
     listCategories();
   }, []);
 

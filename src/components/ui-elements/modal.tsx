@@ -18,7 +18,7 @@ const ModalOverlay: React.FC<IModalOverlayProps> = (props) => {
   const content = (
     <div className={`modal ${props.className}`}>
       <header className={`modal__header ${props.headerClass}`}>
-        <h2>{props.header}</h2>
+        <h2 className="heading-secondary">{props.header}</h2>
       </header>
       <form
         onSubmit={
@@ -39,7 +39,7 @@ const ModalOverlay: React.FC<IModalOverlayProps> = (props) => {
 
 export interface IModalProps {
   show: boolean;
-  onCancel: () => {};
+  onCancel: () => void;
   modalProps: IModalOverlayProps
 }
 

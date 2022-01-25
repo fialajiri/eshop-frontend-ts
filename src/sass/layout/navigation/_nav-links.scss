@@ -19,6 +19,13 @@
         cursor: pointer;
       }
     }
+
+    &__icon {
+      font-size: 3.5rem;
+      line-height: 1.2 !important;
+      color: $color-dark;
+      cursor: pointer;
+    }
   }
 
   &__button {

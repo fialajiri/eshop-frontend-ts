@@ -184,6 +184,12 @@ body {
   z-index: 10;
   cursor: pointer;
 }
+.nav__list__icon {
+  font-size: 3.5rem;
+  line-height: 1.2 !important;
+  color: #1f1f1f;
+  cursor: pointer;
+}
 .nav__button {
   text-decoration: none;
   color: #1f1f1f;
@@ -388,8 +394,117 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(100, 88, 50, 0.51);
+  background: rgba(100, 88, 50, 0.4);
   z-index: 10;
+}
+
+.loading-spinner__as-overlay {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(235, 230, 215, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-spinner__dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.loading-spinner__dual-ring::after {
+  content: " ";
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 2px solid #d1c7a3;
+  border-color: #000 transparent #000 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+.loading-spinner__logo {
+  border-radius: 50%;
+  animation: pulsate 1.3s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulsate {
+  0% {
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+.error-modal__paragraph {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.modal {
+  z-index: 100;
+  position: fixed;
+  top: 22vh;
+  left: 10%;
+  width: 80%;
+  background: #ebe6d7;
+  box-shadow: 0 3rem 8rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+}
+.modal__header {
+  width: 100%;
+  padding: 1rem;
+  background-color: #ebe6d7;
+  color: #f9f9f9;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.modal__header h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0.5rem;
+  color: #1f1f1f;
+}
+.modal__content {
+  padding: 1rem 0.5rem;
+}
+.modal__footer {
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.modal-enter {
+  transform: translateY(-10rem);
+  opacity: 0;
+}
+.modal-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+.modal-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.modal-exit-active {
+  transform: translateY(-10rem);
+  opacity: 0;
+  transition: all 200ms;
 }
 
 .signin__container {
@@ -572,7 +687,7 @@ body {
   border-left: 1px solid #d1c7a3;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 .product-card__image {
   position: relative;
@@ -594,6 +709,7 @@ body {
 .product-card__name span, .product-card__price span {
   text-transform: none;
 }
+
 .button__add-to-cart {
   width: 100%;
 }
@@ -773,6 +889,90 @@ body {
 .product-insert__categories option:active,
 .product-insert__categories option:checked {
   background: #ebe6d7;
+}
+
+.product-detail-gallery__list {
+  list-style: none;
+  grid-column: 1/2;
+  padding: 1.5rem;
+  border-right: 1px solid #d1c7a3;
+  border-bottom: 1px solid #d1c7a3;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.product-detail-gallery__list__item {
+  position: relative;
+  width: 100%;
+  height: 50rem;
+}
+
+.product-detail-info__container {
+  grid-column: 2/3;
+  padding: 14rem 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.product-detail-info__name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  font-weight: 500;
+}
+.product-detail-info__price {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.product-detail-info__button {
+  padding: 1rem 2rem !important;
+}
+
+.product-details-navigation__container {
+  grid-column: 1/-1;
+  padding: 1rem;
+  border-bottom: 1px solid #d1c7a3;
+  text-transform: uppercase;
+}
+.product-details-navigation__list {
+  padding-left: 4rem;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.product-details-navigation__list--item {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.product-details-navigation__list--item span {
+  line-height: 1.2 !important;
+  text-decoration: none;
+  color: #645832;
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+.product-details-navigation__list--item a {
+  line-height: 1.2 !important;
+  text-decoration: none;
+  color: #645832;
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 200ms;
+}
+.product-details-navigation__list--item a:hover {
+  color: #000;
+}
+
+.product-detail__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 /*# sourceMappingURL=globals.css.map */

@@ -1,0 +1,23 @@
+.product-detail-gallery{
+
+    &__list {
+        list-style: none;
+        grid-column:  1 / 2;
+        padding: 1.5rem;
+
+        border-right: $border-line;
+        border-bottom: $border-line;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+    }
+
+    &__list__item{
+        position: relative;
+        width: 100%;
+        height: 50rem;
+
+    }
+}

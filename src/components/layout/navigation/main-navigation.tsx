@@ -48,7 +48,7 @@ const MainNavigation: React.FC = () => {
       {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
       {cartDrawerIsOpen && <Backdrop onClick={toggleCartHandler} />}
       {renderDrawer && (
-        <SideDrawer show={drawerIsOpen} onClick={toggleCartHandler}>
+        <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
           <nav className="navigation__drawer">
             <NavigationLinks openCart={() => {}} />
           </nav>

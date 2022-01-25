@@ -3,10 +3,9 @@
     padding: 2rem;
     border-top: $border-line;
     border-left: $border-line;
-
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   &__image {
@@ -16,7 +15,7 @@
     cursor: pointer;
   }
 
-  &__info {    
+  &__info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,13 +32,8 @@
       text-transform: none;
     }
   }
-
-  &__action{
-
-  }
 }
 
 .button__add-to-cart {
   width: 100%;
-  
 }

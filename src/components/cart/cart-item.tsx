@@ -26,7 +26,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
     <div className="cart-item__container">
       <div className="cart-item__image">
         <Image
-          src={item.image}
+          src={`${process.env.IMAGE_DOMAIN}/${item.image}`}
           layout="fill"
           objectFit="cover"
           alt={item.name}
