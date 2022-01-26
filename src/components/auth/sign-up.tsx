@@ -24,7 +24,7 @@ const SignUp: React.FC = () => {
         value: "",
         isValid: false,
       },
-      passwordConfirm: {
+      confirmPassword: {
         value: "",
         isValid: false,
       },
@@ -37,8 +37,8 @@ const SignUp: React.FC = () => {
 
     const email = formState.inputs.email.value;
     const password = formState.inputs.password.value;
-    const passwordConfirm = formState.inputs.passwordConfirm.value;
-    if (password !== passwordConfirm) {
+    const confirmPassword = formState.inputs.confirmPassword.value;
+    if (password !== confirmPassword) {
       setError('Hesla se musí shodovat');
       return;
     }
@@ -77,7 +77,7 @@ const SignUp: React.FC = () => {
           />
           <Input
             className="auth-page__password"
-            id="passwordConfirm"
+            id="confirmPassword"
             element="input"
             label="Potvrďte heslo"
             type="password"

@@ -12,7 +12,7 @@ const NavigationLinks: React.FC<NavigationLinksProps> = (props) => {
   const router = useRouter();
   const {user} = useTypedSelector(state => state.userLogin)
 
-  const userLink = (user && user.isAdmin)? '/admin/dashboard': user? '/user/profile' : 'user/signin'
+  const userLink = (user && user.isAdmin)? '/admin': user? '/user' : 'user/signin'
 
   
 

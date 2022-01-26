@@ -8,9 +8,17 @@ export const getUserDetails = (userId: string) => {
   return async (dispatch: Dispatch<UserAction>) => {
     dispatch({ type: UserActionTypes.USER_DETAILS_REQUEST });
 
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    };
+
     try {
       const { data: userDetails }: { data: UserDetailsDoc } = await axios.get(
-        `${process.env.BACKEND_URL}/api/users/:${userId}`
+        `${process.env.BACKEND_URL}/api/users/${userId}`,
+        config
       );
       dispatch({
         type: UserActionTypes.USER_DETAILS_SUCCESS,

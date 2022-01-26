@@ -16,7 +16,7 @@ export interface userUpdateProfileData {
   password?: string;
 }
 
-export const userUpdateProfile = (data: userUpdateProfileData) => {
+export const updateUserProfile = (data: userUpdateProfileData) => {
   return async (dispatch: Dispatch<UserAction>, getState: () => RootState) => {
     dispatch({ type: UserActionTypes.USER_UPDATE_PROFILE_REQUEST });
 

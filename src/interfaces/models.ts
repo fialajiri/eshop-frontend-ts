@@ -2,8 +2,8 @@ export interface UserDoc {
   id: string;
   email: string;
   isAdmin: boolean;
-  updatedAt?: Date;
-  createdAt?: Date;
+  updatedAt?: Date | string;
+  createdAt?: Date | string;
 }
 
 export interface UserDetailsDoc {
@@ -25,6 +25,7 @@ export interface AddressDoc {
   streetNumber: string;
   city: string;
   postal: string;
+  country: string;
 }
 
 export interface CategoryDoc {
@@ -47,8 +48,8 @@ export interface ProductDoc {
   price: number;
   countInStock: number;
   availability: number;
-  updatedAt?: Date;
-  createdAt?: Date;
+  updatedAt: Date | string;
+  createdAt: Date | string;
 }
 
 export interface CartItemDoc {

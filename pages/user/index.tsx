@@ -1,4 +1,7 @@
+import UserProfile from "../../src/components/user/user-profile"
+
+
 const UserProfilePage: React.FC = () => {
-    return <div>Users Profile Page</div>
+    return <UserProfile />
 }
 export default UserProfilePage

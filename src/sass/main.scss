@@ -11,6 +11,8 @@
 @import 'layout/navigation/nav-links';
 @import 'layout/navigation/side-drawer';
 
+@import 'layout/tabs/tabs';
+
 @import 'components/form-elements/input';
 @import 'components/form-elements/multiple-image-upload';
 
@@ -20,6 +22,10 @@
 @import 'components/ui-elements/loading-spinner';
 @import 'components/ui-elements/error_modal';
 @import 'components/ui-elements/modal';
+@import 'components/ui-elements/form';
+
+@import 'components/user/user-profile';
+@import 'components/user/user-info';
 
 @import 'components/auth/sign-in';
 
