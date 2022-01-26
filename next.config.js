@@ -35,7 +35,7 @@ module.exports = (phase) => {
     },
 
     env: {
-      BACKEND_URL: "https://jf-ecommerce-project.herokuapp.com",
+      BACKEND_URL: "https://ecommerce-project-ts.herokuapp.com",
       IMAGE_DOMAIN: 'https://ecommerce-ts-project.s3.eu-central-1.amazonaws.com'
     },
   };
