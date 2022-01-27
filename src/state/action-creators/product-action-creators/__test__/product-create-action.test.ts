@@ -25,6 +25,7 @@ const productData: CreateProductData = {
   categories: [],
   description: "some good stuff",
   countInStock: 10,
+  //@ts-ignore
   images: ["image.jpg"] ,
   price: 1000,
 };

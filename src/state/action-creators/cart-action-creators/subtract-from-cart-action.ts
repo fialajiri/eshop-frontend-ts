@@ -4,6 +4,7 @@ import { CartDoc } from "../../../interfaces/models";
 import { Dispatch } from "react";
 import axios from "axios";
 import { RootState } from "../..";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const subtractFromCart = (productId: string, quantity: number) => {
   return async (dispatch: Dispatch<CartAction>, getState: () => RootState) => {
@@ -19,7 +20,8 @@ export const subtractFromCart = (productId: string, quantity: number) => {
         {
           productId,
           quantity,
-        }
+        },
+        AXIOS_CONFIG
       );
       dispatch({
         type: CartActionTypes.CART_UPDATE_SUCCESS,

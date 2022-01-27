@@ -4,6 +4,7 @@ import { CartDoc } from "../../../interfaces/models";
 import { Dispatch } from "react";
 import axios from "axios";
 import { RootState } from "../..";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const clearCart = () => {
   return async (dispatch: Dispatch<CartAction>, getState: () => RootState) => {
@@ -16,7 +17,7 @@ export const clearCart = () => {
 
       const { data: cart }: { data: CartDoc } = await axios.put(
         `${process.env.BACKEND_URL}/api/cart/clearcart/${cartId}`,
-        
+        AXIOS_CONFIG
       );
       dispatch({
         type: CartActionTypes.CART_UPDATE_SUCCESS,

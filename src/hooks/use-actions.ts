@@ -5,6 +5,7 @@ import * as userActionCreators from "../state/action-creators/user-action-creato
 import * as cartActionCreators from "../state/action-creators/cart-action-creators";
 import * as productActionCreators from "../state/action-creators/product-action-creators";
 import * as categoryActionsCreators from "../state/action-creators/category-action-creators";
+import * as orderActionsCreators from "../state/action-creators/order-action-creators";
 
 export const useActions = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export const useActions = () => {
         ...cartActionCreators,
         ...productActionCreators,
         ...categoryActionsCreators,
+        ...orderActionsCreators,
       },
       dispatch
     );

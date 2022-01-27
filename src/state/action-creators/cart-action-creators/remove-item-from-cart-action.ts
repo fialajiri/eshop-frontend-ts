@@ -4,6 +4,7 @@ import { CartDoc } from "../../../interfaces/models";
 import { Dispatch } from "react";
 import axios from "axios";
 import { RootState } from "../..";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const removeItemFromCart = (productId: string) => {
   return async (dispatch: Dispatch<CartAction>, getState: () => RootState) => {
@@ -17,8 +18,9 @@ export const removeItemFromCart = (productId: string) => {
       const { data: cart }: { data: CartDoc } = await axios.put(
         `${process.env.BACKEND_URL}/api/cart/removefromcart/${cartId}`,
         {
-          productId,         
-        }
+          productId,
+        },
+        AXIOS_CONFIG
       );
       dispatch({
         type: CartActionTypes.CART_UPDATE_SUCCESS,

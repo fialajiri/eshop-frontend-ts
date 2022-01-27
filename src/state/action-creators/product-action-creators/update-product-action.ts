@@ -3,6 +3,7 @@ import { ProductAction } from "../../actions/product-actions";
 import axios from "axios";
 import { Dispatch } from "react";
 import { ProductDoc } from "../../../interfaces/models";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export interface UpdateProductData {
   productId: string;
@@ -21,7 +22,8 @@ export const updateProduct = (inputs: UpdateProductData) => {
     try {
       const { data: product }: { data: ProductDoc } = await axios.put(
         `${process.env.BACKEND_URL}/api/products/${inputs.productId}`,
-        { ...inputs }
+        { ...inputs },
+        AXIOS_CONFIG
       );
       dispatch({
         type: ProductActionTypes.PRODUCT_UPDATE_SUCCESS,

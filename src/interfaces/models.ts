@@ -1,3 +1,6 @@
+import { PaymentMethods } from "./payment-methods-enum";
+import { OrderStatus } from "./order-status-enum";
+
 export interface UserDoc {
   id: string;
   email: string;
@@ -12,10 +15,8 @@ export interface UserDetailsDoc {
   lastName: string;
   email: string;
   isAdmin: boolean;
-  addresses: AddressDoc[]
+  addresses: AddressDoc[];
 }
-
-
 
 export interface AddressDoc {
   firstName: string;
@@ -34,7 +35,7 @@ export interface CategoryDoc {
   products: ProductDoc[] | string[];
 }
 
-export interface CategoryInProductDoc{
+export interface CategoryInProductDoc {
   id: string;
   name: string;
 }
@@ -43,7 +44,7 @@ export interface ProductDoc {
   id: string;
   name: string;
   image: string[];
-  categories: CategoryInProductDoc [];
+  categories: CategoryInProductDoc[];
   description: string;
   price: number;
   countInStock: number;
@@ -68,4 +69,28 @@ export interface CartDoc {
   total: number;
   updatedAt: string;
   createdAt: string;
+}
+
+export interface OrderItemDoc {
+  name: string;
+  quantity: number;
+  image: string;
+  price: number;
+  subtotal: number;
+  productId: string;
+}
+
+export interface OrderDoc {
+  userId: string;
+  orderItems: OrderItemDoc[];
+  shippingAddress: AddressDoc;
+  paymentMethod: PaymentMethods;
+  taxPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
+  orderStatus: OrderStatus;
+  paidAt: Date | string;
+  deliveredAt: Date | string;
+  updatedAt: Date | string;
+  createdAt: Date | string;
 }

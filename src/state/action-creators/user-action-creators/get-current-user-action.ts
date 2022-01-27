@@ -3,6 +3,7 @@ import { UserAction } from "../../actions/user-actions";
 import { Dispatch } from "redux";
 import axios from "axios";
 import { UserDoc } from "../../../interfaces/models";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const getCurrentUser = () => {
   return async (dispatch: Dispatch<UserAction>) => {
@@ -10,7 +11,8 @@ export const getCurrentUser = () => {
 
     try {
       const { data: currentUser }: { data: UserDoc } = await axios.get(
-        `${process.env.BACKEND_URL}/api/users/currentuser`
+        `${process.env.BACKEND_URL}/api/users/currentuser`,
+        AXIOS_CONFIG
       );
       dispatch({
         type: UserActionTypes.USER_CURRENT_SUCCESS,

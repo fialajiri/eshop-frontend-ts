@@ -3,22 +3,16 @@ import { UserAction } from "../../actions/user-actions";
 import { Dispatch } from "redux";
 import axios from "axios";
 import { UserDetailsDoc } from "../../../interfaces/models";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const getUserDetails = (userId: string) => {
   return async (dispatch: Dispatch<UserAction>) => {
     dispatch({ type: UserActionTypes.USER_DETAILS_REQUEST });
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    };
-
     try {
       const { data: userDetails }: { data: UserDetailsDoc } = await axios.get(
         `${process.env.BACKEND_URL}/api/users/${userId}`,
-        config
+        AXIOS_CONFIG
       );
       dispatch({
         type: UserActionTypes.USER_DETAILS_SUCCESS,

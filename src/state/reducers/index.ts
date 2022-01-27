@@ -16,6 +16,13 @@ import { userListReducer } from "./user-reducers/user-list-reducer";
 import { userUpdateProfileReducer } from "./user-reducers/user-update-profile-reducer";
 import { userUpdateReducer } from "./user-reducers/user-update-reducer";
 import { getCurrentUserReducer } from "./user-reducers/user-get-current-reducer";
+import { orderCreateReducer } from "./order-reducers/order-create-reducer";
+import { orderDeliveredReducer } from "./order-reducers/order-deliverd-reducer";
+import { orderDetailsReducer } from "./order-reducers/order-details-reducer";
+import { orderListReducer } from "./order-reducers/order-list-reducer";
+import { orderListMyReducer } from "./order-reducers/order-list-my-reducer";
+import { orderPaidReducer } from "./order-reducers/order-paid-reducer";
+
 
 const reducers = combineReducers({
   userLogin: userLoginReducer,
@@ -35,6 +42,13 @@ const reducers = combineReducers({
   categoryList: categoryListReducer,
   createCategory: categoryCreateReducer,
   deleteCategory: categoryDeleteReducer,
+  orderCreate: orderCreateReducer,
+  orderDelivered: orderDeliveredReducer,
+  orderDetails: orderDetailsReducer,
+  orderList: orderListReducer,
+  orderListMy: orderListMyReducer,
+  orderPaid: orderPaidReducer,
+  
 });
 
 export default reducers;

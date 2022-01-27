@@ -5,14 +5,14 @@ import { ProductDoc } from "../../../interfaces/models";
 
 export interface ProductCreateState {
   loading: boolean;
-  success: boolean;
+  success: boolean | undefined;
   error: string[] | null;
   product: ProductDoc | null;
 }
 
 export const productCreateInitialState: ProductCreateState = {
   loading: false,
-  success: false,
+  success: undefined,
   error: null,
   product: null,
 };

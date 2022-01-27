@@ -5,13 +5,13 @@ import { ProductDoc } from "../../../interfaces/models";
 
 export interface ProductDeleteState {
   loading: boolean;
-  success: boolean;
+  success: boolean | undefined;
   error: string[] | null;
 }
 
 export const productDeleteInitialState: ProductDeleteState = {
   loading: false,
-  success: false,
+  success: undefined,
   error: null,
 };
 

@@ -4,6 +4,7 @@ import { AddressDoc } from "../../../interfaces/models";
 
 import { Dispatch } from "redux";
 import axios from "axios";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export interface userUpdateData {
   id: string;
@@ -20,7 +21,7 @@ export const updateUser = (data: userUpdateData) => {
     try {
       await axios.put(`${process.env.BACKEND_URL}/api/users/${data.id}`, {
         ...data,
-      });
+      }, AXIOS_CONFIG);
       dispatch({ type: UserActionTypes.USER_UPDATE_SUCCESS });
     } catch (err: any) {
       dispatch({

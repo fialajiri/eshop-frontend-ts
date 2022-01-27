@@ -3,6 +3,7 @@ import { ProductAction } from "../../actions/product-actions";
 import { CategoryDoc, ProductDoc } from "../../../interfaces/models";
 import axios from "axios";
 import { Dispatch } from "react";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const listProducts = (
   keyword: string = "",
@@ -25,11 +26,12 @@ export const listProducts = (
           category: CategoryDoc | null;
         };
       } = await axios.get(
-        `${process.env.BACKEND_URL}/api/products?keyword=${keyword}&categoryId=${categoryId}&pageNumber=${pageNumber}`
+        `${process.env.BACKEND_URL}/api/products?keyword=${keyword}&categoryId=${categoryId}&pageNumber=${pageNumber}`,
+        AXIOS_CONFIG
       );
 
-      console.log(category)
-      
+      console.log(category);
+
       dispatch({
         type: ProductActionTypes.PRODUCT_LIST_SUCCESS,
         payload: {

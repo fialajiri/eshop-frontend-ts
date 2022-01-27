@@ -3,6 +3,7 @@ import { CartActionTypes } from "../../action-types/cart-types";
 import { CartDoc } from "../../../interfaces/models";
 import { Dispatch } from "react";
 import axios from "axios";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const getCartById = (cartId: string) => {
   return async (dispatch: Dispatch<CartAction>) => {
@@ -12,7 +13,7 @@ export const getCartById = (cartId: string) => {
 
     try {
       const { data: cart }: { data: CartDoc } = await axios.get(
-        `${process.env.BACKEND_URL}/api/cart/${cartId}`
+        `${process.env.BACKEND_URL}/api/cart/${cartId}`, AXIOS_CONFIG
       );
       dispatch({
         type: CartActionTypes.CART_UPDATE_SUCCESS,

@@ -1,13 +1,10 @@
 import { UserActionTypes } from "../../action-types/user-types";
 import { UserAction } from "../../actions/user-actions";
-import {
-  UserDoc,
-  AddressDoc,
-  UserDetailsDoc,
-} from "../../../interfaces/models";
+import { UserDoc, AddressDoc, UserDetailsDoc } from "../../../interfaces/models";
 import { RootState } from "../..";
 import { Dispatch } from "redux";
 import axios from "axios";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export interface userUpdateProfileData {
   firstName?: string;
@@ -22,11 +19,11 @@ export const updateUserProfile = (data: userUpdateProfileData) => {
 
     try {
       const userId = getState().userLogin.user?.id;
-      const { data: updatedUserProfile }: { data: UserDetailsDoc } =
-        await axios.put(
-          `${process.env.BACKEND_URL}/api/users/updateprofile/${userId}`,
-          { ...data }
-        );
+      const { data: updatedUserProfile }: { data: UserDetailsDoc } = await axios.put(
+        `${process.env.BACKEND_URL}/api/users/updateprofile/${userId}`,
+        { ...data },
+        AXIOS_CONFIG
+      );
       dispatch({
         type: UserActionTypes.USER_UPDATE_PROFILE_SUCCESS,
         payload: updatedUserProfile,

@@ -1,8 +1,9 @@
 import { ProductActionTypes } from "../../action-types/product-types";
 import { ProductAction } from "../../actions/product-actions";
 import axios from "axios";
-import { Dispatch } from "react";
+import { Dispatch } from "redux";
 import { ProductDoc } from "../../../interfaces/models";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export interface CreateProductData {
   name: string;
@@ -27,7 +28,8 @@ export const createProduct = (inputs: CreateProductData) => {
           `${process.env.BACKEND_URL}/api/upload/image`,
           {
             name: inputs.name,
-          }
+          },
+          AXIOS_CONFIG
         );
 
         await axios.put(url, image, {
@@ -39,11 +41,10 @@ export const createProduct = (inputs: CreateProductData) => {
         images.push(key);
       }
 
-      console.log({...inputs, images})
-
       const { data: product }: { data: ProductDoc } = await axios.post(
         `${process.env.BACKEND_URL}/api/products`,
-        { ...inputs, images}
+        { ...inputs, images },
+        AXIOS_CONFIG
       );
       dispatch({
         type: ProductActionTypes.PRODUCT_CREATE_SUCCESS,

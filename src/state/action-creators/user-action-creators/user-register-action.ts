@@ -3,6 +3,7 @@ import { UserAction } from "../../actions/user-actions";
 import { UserDoc } from "../../../interfaces/models";
 import { Dispatch } from "redux";
 import axios from "axios";
+import { AXIOS_CONFIG } from "../../../interfaces/axios-config";
 
 export const register = (email: string, password: string) => {
   return async (dispatch: Dispatch<UserAction>) => {
@@ -11,7 +12,8 @@ export const register = (email: string, password: string) => {
     try {
       const { data: user }: { data: UserDoc } = await axios.post(
         `${process.env.BACKEND_URL}/api/users/signup`,
-        { email, password }
+        { email, password },
+        AXIOS_CONFIG
       );
 
       dispatch({ type: UserActionTypes.USER_REGISTER_SUCCESS, payload: user });

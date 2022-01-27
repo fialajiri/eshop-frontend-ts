@@ -6,14 +6,14 @@ import { ProductDoc } from "../../../interfaces/models";
 
 export interface ProductUpdateState {
   loading: boolean;
-  success: boolean;
+  success: boolean | undefined;
   error: string[] | null;
   product: ProductDoc | null;
 }
 
 export const productUpdateInitialState: ProductUpdateState = {
   loading: false,
-  success: false,
+  success: undefined,
   error: null,
   product: null,
 };
