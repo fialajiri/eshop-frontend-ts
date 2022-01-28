@@ -1,6 +1,6 @@
 # [Ecommerce Project](https://eshop-frontend-ts.vercel.app/produkty)
 
-## WORK IN PROGRESS!!!
+## UNDER DEVELOPMENT!!!
 
 ## Obecné informace
 Tento projekt tvoří frontend k eshopu. Tato webová stránka bude sloužit pro prezentaci a prodej výrobků prodejce: Mezi hlavní vlastnost patří:
