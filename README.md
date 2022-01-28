@@ -26,8 +26,8 @@ Tento projekt tvoří frontend k eshopu. Tato webová stránka bude sloužit pro
     - react-redux: 7.2.6
 
   - Projekt je testovám pomocí frameworku Jest
-    - jest: ^27.4.7
-    - msw: ^0.36.4
+    - jest: 27.4.7
+    - msw: 0.36.4
   
   - Styling je napsaný v CSS, speciáně s použitím SASS
     - node-sass: 6.0.1
