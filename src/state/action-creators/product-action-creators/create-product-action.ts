@@ -19,9 +19,9 @@ export const createProduct = (inputs: CreateProductData) => {
     dispatch({ type: ProductActionTypes.PRODUCT_CREATE_REQUEST });
 
     try {
-      let images: string[] = [];
+      let image: string[] = [];
 
-      for (const image of inputs.images) {
+      for (const img of inputs.images) {
         const {
           data: { key, url },
         }: { data: { key: string; url: string } } = await axios.post(
@@ -32,18 +32,18 @@ export const createProduct = (inputs: CreateProductData) => {
           AXIOS_CONFIG
         );
 
-        await axios.put(url, image, {
+        await axios.put(url, img, {
           headers: {
-            "Content-Type": image.type,
+            "Content-Type": img.type,
           },
         });
 
-        images.push(key);
+        image.push(key);
       }
 
       const { data: product }: { data: ProductDoc } = await axios.post(
         `${process.env.BACKEND_URL}/api/products`,
-        { ...inputs, images },
+        { ...inputs, image },
         AXIOS_CONFIG
       );
       dispatch({

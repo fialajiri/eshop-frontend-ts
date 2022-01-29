@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTypedSelector } from "../../hooks/use-types-selector";
 import { useRouter } from "next/router";
 import ProductList from "./product-list";
@@ -9,29 +9,34 @@ import ProductFilter from "./product-filter";
 import LoadingSpinner from "../ui-elements/loading-spinner";
 import { useElementOnScreen } from "../../hooks/use-element-on-screen";
 
-
-
 const ProductCatalog: React.FC = () => {
   const router = useRouter();
   const { categoryId } = router.query as { categoryId: string };
-  console.log(categoryId)
-  
 
   const { containerRef, isVisible } = useElementOnScreen({
     root: null,
     rootMargin: "-100px",
     threshold: 0,
   });
+
   const { listProducts, listCategories } = useActions();
-  const { loading, error, products } = useTypedSelector(
-    (state) => state.productList
-  );
+  const { loading, error, products } = useTypedSelector((state) => state.productList);
+  const { categories } = useTypedSelector((state) => state.categoryList);
 
   const { category } = useTypedSelector((state) => state.productList);
 
   useEffect(() => {
-    listProducts('', categoryId);
-    listCategories();
+    if (products.length === 0) {
+      listProducts();
+    }
+
+    if (categories.length === 0) {
+      listCategories();
+    }
+
+    if (categoryId != undefined) {
+      listProducts("", categoryId);
+    }
   }, []);
 
   if (loading || !products) {
@@ -48,7 +53,7 @@ const ProductCatalog: React.FC = () => {
         <div className="catalog__container--top">
           <div className={isVisible ? "" : "catalog__container--top--sticky"}>
             <ProductFilter isVisible={isVisible} />
-            <ProductSort  />
+            <ProductSort />
           </div>
         </div>
         <ProductList />

@@ -30,8 +30,6 @@ export const listProducts = (
         AXIOS_CONFIG
       );
 
-      console.log(category);
-
       dispatch({
         type: ProductActionTypes.PRODUCT_LIST_SUCCESS,
         payload: {
