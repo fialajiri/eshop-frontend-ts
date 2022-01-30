@@ -1,6 +1,7 @@
 import { useTypedSelector } from "../../hooks/use-types-selector";
 import CartItem from "../cart/cart-item";
 import Button from "../ui-elements/button";
+import LoadingSpinner from "../ui-elements/loading-spinner";
 
 export interface CartSummaryProps {
   setActive: (index: number) => void;
@@ -9,10 +10,14 @@ export interface CartSummaryProps {
 const CartSummary: React.FC<CartSummaryProps> = ({ setActive }) => {
   const { cart } = useTypedSelector((state) => state.cartState);
 
+  if (!cart) {
+    return <LoadingSpinner asOverlay />;
+  }
+
   return (
     <div className="cart-summary__container">
       <ul>
-        {cart!.items.map((item) => (
+        {cart.items.map((item) => (
           <CartItem key={item.name} item={item} />
         ))}
       </ul>
@@ -26,7 +31,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({ setActive }) => {
         </h2>
       </div>
 
-      <Button  className="cart-summary__button" onClick={() => setActive(1)}>
+      <Button className="cart-summary__button" onClick={() => setActive(1)}>
         Doprava
       </Button>
     </div>
