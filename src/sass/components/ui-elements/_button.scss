@@ -3,17 +3,21 @@
   text-decoration: 0;
   font-family: $font-sans;
   font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 3px;
+  font-weight: 400;
+  letter-spacing: .5px;
   text-transform: uppercase;  
   background-color: $color-brawn;
   color: $color-decor;
-  padding: 1.4rem 6rem;
+  padding: 1.4rem;
   border: 2px solid transparent;
   border-radius: $border-radius;
   cursor: pointer;
   transition: all 200ms;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 
   &:hover{
       background-color: $color-dark;
@@ -23,7 +27,7 @@
     background: transparent;    
     border: $border-line;
     color: $color-dark;
-    letter-spacing: 1px;
+    
 
     &:hover{
         background-color: transparent;

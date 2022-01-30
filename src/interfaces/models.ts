@@ -18,7 +18,7 @@ export interface UserDetailsDoc {
   addresses: AddressDoc[];
 }
 
-export interface AddressDoc {
+export interface AddressDoc  {
   firstName: string;
   lastName: string;
   phone: string;

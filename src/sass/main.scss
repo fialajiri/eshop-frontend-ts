@@ -15,6 +15,7 @@
 
 @import 'components/form-elements/input';
 @import 'components/form-elements/multiple-image-upload';
+@import 'components/form-elements/floating-labe-input';
 
 @import 'components/ui-elements/notification';
 @import 'components/ui-elements/button';
@@ -45,4 +46,9 @@
 @import 'components/product/product-details-info';
 @import 'components/product/product-details-navigation';
 @import 'components/product/product-details';
+
+@import 'components/order/address-form';
+@import 'components/order/cart-summary';
+@import 'components/order/shipping';
+@import 'components/order/payment';
 

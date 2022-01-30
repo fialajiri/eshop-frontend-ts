@@ -16,4 +16,12 @@ export interface CartUpdateSuccessAction  {
   payload: CartDoc;
 }
 
-export type CartAction = CartRequestAction | CartErrorAction | CartUpdateSuccessAction;
+export interface CartShowAction {
+  type: CartActionTypes.CART_SHOW
+}
+
+export interface CartHideAction {
+  type: CartActionTypes.CART_HIDE
+}
+
+export type CartAction = CartRequestAction | CartErrorAction | CartUpdateSuccessAction | CartShowAction | CartHideAction

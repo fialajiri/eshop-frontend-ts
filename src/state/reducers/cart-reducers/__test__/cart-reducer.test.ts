@@ -8,6 +8,7 @@ it("set loading to true upon receiving an action of type GET_CART_REQUEST", asyn
     loading: true,
     error: null,
     cart: null,
+    isCartVisible: false,
   };
 
   const newState = cartReducer(cartInitailState, {
@@ -22,12 +23,14 @@ it("set an error upon receiving an action of type GET_CART_ERROR", async () => {
     loading: true,
     error: null,
     cart: null,
+    isCartVisible: false,
   };
 
   const expectedState: CartState = {
     loading: false,
     error: payload,
     cart: null,
+    isCartVisible: false,
   };
 
   const newState = cartReducer(cartInitailState, {
@@ -44,17 +47,42 @@ it("set cart state upon receiving an action of type CART_UPDATE_SUCCESS", async 
     loading: true,
     error: null,
     cart: null,
+    isCartVisible: false,
   };
 
   const expectedState: CartState = {
     loading: false,
     error: null,
     cart: payload,
+    isCartVisible: false,
   };
 
   const newState = cartReducer(cartInitailState, {
     type: CartActionTypes.CART_UPDATE_SUCCESS,
     payload: payload,
+  });
+  expect(newState).toEqual(expectedState);
+});
+
+it("set cart isVisible upon receiving an action of type CART_SHOW", async () => {
+  const payload: CartDoc = mockCart;
+
+  const previousState: CartState = {
+    loading: true,
+    error: null,
+    cart: null,
+    isCartVisible: false,
+  };
+
+  const expectedState: CartState = {
+    loading: false,
+    error: null,
+    cart: null,
+    isCartVisible: true,
+  };
+
+  const newState = cartReducer(cartInitailState, {
+    type: CartActionTypes.CART_SHOW,    
   });
   expect(newState).toEqual(expectedState);
 });

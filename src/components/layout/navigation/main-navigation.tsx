@@ -5,15 +5,18 @@ import SideDrawer from "../../ui-elements/side-drawer";
 import Backdrop from "../../ui-elements/backdrop";
 import Cart from "../../cart/cart";
 import CartDrawer from "../../cart/cart-drawer";
+import { useTypedSelector } from "../../../hooks/use-types-selector";
+import { useActions } from "../../../hooks/use-actions";
 
 const MainNavigation: React.FC = () => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-  const [renderDrawer, setRenderDrawwer] = useState(false);
-  const [cartDrawerIsOpen, setCartDrawerIsOpen] = useState(false);
+  const [renderDrawer, setRenderDrawwer] = useState(false); 
   const [renderCart, setRenderCart] = useState(false);
 
-  const toggleCartHandler = () =>
-    setCartDrawerIsOpen((prevState) => !prevState);
+  const { isCartVisible } = useTypedSelector((state) => state.cartState);
+  const { toggleCartVisibility } = useActions();
+
+  
 
   const openDrawerHandler = () => {
     setDrawerIsOpen((prevState) => !prevState);
@@ -27,7 +30,7 @@ const MainNavigation: React.FC = () => {
   };
 
   const disableScrolling = () => {
-    if (drawerIsOpen || cartDrawerIsOpen) {
+    if (drawerIsOpen || isCartVisible) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "visible";
@@ -36,7 +39,7 @@ const MainNavigation: React.FC = () => {
 
   useEffect(() => {
     disableScrolling();
-  }, [drawerIsOpen, cartDrawerIsOpen]);
+  }, [drawerIsOpen, isCartVisible]);
 
   useEffect(() => {
     setRenderDrawwer(true);
@@ -46,16 +49,16 @@ const MainNavigation: React.FC = () => {
   return (
     <div className="navigation">
       {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
-      {cartDrawerIsOpen && <Backdrop onClick={toggleCartHandler} />}
+      {isCartVisible && <Backdrop onClick={() => toggleCartVisibility(false)} />}
       {renderDrawer && (
         <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
           <nav className="navigation__drawer">
-            <NavigationLinks openCart={() => {}} />
+            <NavigationLinks />
           </nav>
         </SideDrawer>
       )}
       {renderCart && (
-        <CartDrawer show={cartDrawerIsOpen}>
+        <CartDrawer show={isCartVisible}>
           <nav className="navigation__drawer">
             <Cart />
           </nav>
@@ -74,7 +77,7 @@ const MainNavigation: React.FC = () => {
         </label>
 
         <nav className="main__navigation__links">
-          <NavigationLinks openCart={toggleCartHandler} />
+          <NavigationLinks />
         </nav>
       </div>
     </div>

@@ -3,17 +3,12 @@ import LoadingSpinner from "../ui-elements/loading-spinner";
 import Button from "../ui-elements/button";
 import CartItem from "./cart-item";
 
-
 const Cart: React.FC = () => {
-  
   const { cart } = useTypedSelector((state) => state.cartState);
-  
-    if (cart === null){
-        return <LoadingSpinner />
-    }
 
-    
-   
+  if (cart === null) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="cart__container">
@@ -37,19 +32,22 @@ const Cart: React.FC = () => {
             </h2>
           </div>
           <div className="cart__actions">
-            <Button type="button" className="cart__actions__button" inverse>
+            <Button
+              type="button"
+              className="cart__actions__button"
+              inverse
+              link="/produkty"
+            >
               Pokračovat v nakupování
             </Button>
-            <Button type="submit" className="cart__actions__button">
-              Pokračovat
+            <Button type="submit" className="cart__actions__button" link="/order">
+              Objednat
             </Button>
           </div>
         </div>
       </form>
     </div>
   );
-  
-
 };
 
 export default Cart;

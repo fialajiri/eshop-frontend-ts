@@ -2,19 +2,17 @@ import Link from "next/link";
 import { useTypedSelector } from "../../../hooks/use-types-selector";
 import { useRouter } from "next/router";
 import { ShoppingCartSimple, User } from "phosphor-react";
+import { useActions } from "../../../hooks/use-actions";
 
 
-interface NavigationLinksProps {
-  openCart: () => void;
-}
 
-const NavigationLinks: React.FC<NavigationLinksProps> = (props) => {
+const NavigationLinks: React.FC = () => {
   const router = useRouter();
-  const {user} = useTypedSelector(state => state.userLogin)
+  const { user } = useTypedSelector((state) => state.userLogin);
+  const { isCartVisible } = useTypedSelector((state) => state.cartState);
+  const { toggleCartVisibility } = useActions();
 
-  const userLink = (user && user.isAdmin)? '/admin': user? '/user' : 'user/signin'
-
-  
+  const userLink = user && user.isAdmin ? "/admin" : user ? "/user" : "user/signin";
 
   const getClass = (pathName: string): string => {
     if (router.pathname === pathName) return "nav__list__item nav__list__item--active";
@@ -30,11 +28,15 @@ const NavigationLinks: React.FC<NavigationLinksProps> = (props) => {
         <Link href="/produkty">Katalog</Link>
       </li>
       <li className={getClass("/cart")}>
-        <ShoppingCartSimple weight="light" className='nav__list__icon' onClick={props.openCart} />
+        <ShoppingCartSimple
+          weight="light"
+          className="nav__list__icon"
+          onClick={() => toggleCartVisibility(!isCartVisible)}
+        />
       </li>
       <li className={getClass("/login")}>
         <Link href={userLink}>
-          <User weight="light" className='nav__list__icon' />
+          <User weight="light" className="nav__list__icon" />
         </Link>
       </li>
     </ul>

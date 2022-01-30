@@ -368,6 +368,40 @@ body {
   align-self: center;
 }
 
+.floating-label-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform-origin: top left;
+}
+.floating-label-input:focus-within label {
+  transform: translate(0, 0.5rem) scale(0.75);
+}
+.floating-label-input__input {
+  width: 100%;
+  height: 4rem;
+  padding: 1.4rem 1.6rem 0 1.4rem;
+  outline: 0;
+  border: 1px solid #d1c7a3;
+  border-radius: 0.5rem;
+  background: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+}
+.floating-label-input__label {
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  padding: 0 1.2rem;
+  color: #1f1f1f;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(0, 2rem) scale(1);
+  transition: all 300ms;
+}
+.floating-label-input__label--active {
+  transform: translate(0, 0.5rem) scale(0.75);
+}
+
 .notification {
   position: fixed;
   bottom: 0;
@@ -411,17 +445,20 @@ body {
   text-decoration: 0;
   font-family: "Open Sans", sans-serif;
   font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 3px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   background-color: #645832;
   color: #f9f9f9;
-  padding: 1.4rem 6rem;
+  padding: 1.4rem;
   border: 2px solid transparent;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 200ms;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .button:hover {
   background-color: #1f1f1f;
@@ -430,7 +467,6 @@ body {
   background: transparent;
   border: 1px solid #d1c7a3;
   color: #1f1f1f;
-  letter-spacing: 1px;
 }
 .button--inverse:hover {
   background-color: transparent;
@@ -1102,6 +1138,118 @@ body {
 .product-detail__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.address-form__container {
+  max-width: 50rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 1rem;
+  column-gap: 1rem;
+}
+.address-form__input--firstname {
+  grid-column: 1/3;
+}
+.address-form__input--lastname {
+  grid-column: 3/-1;
+}
+.address-form__input--street {
+  grid-column: 1/4;
+}
+.address-form__input--streetnumber {
+  grid-column: 4/-1;
+}
+.address-form__input--city {
+  grid-column: 1/3;
+}
+.address-form__input--phone {
+  grid-column: 3/-1;
+}
+.address-form__input--postal {
+  grid-column: 1/3;
+}
+.address-form__input--country {
+  grid-column: 3/-1;
+}
+
+.cart-summary__container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.cart-summary__button {
+  align-self: flex-end;
+}
+
+.shipping__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.shipping__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.payment__method {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.payment__form__radion-group {
+  width: 49%;
+  display: inline-block;
+}
+@media only screen and (max-width: 56.25em) {
+  .payment__form__radion-group {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+.payment__form__radio-input {
+  display: none;
+}
+.payment__form__radio-label {
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 4.5rem;
+}
+.payment__form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #645832;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -0.4rem;
+}
+.payment__form__radio-button::after {
+  content: "";
+  background-color: #645832;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.payment__form__radio-input:checked ~ .payment__form__radio-label .payment__form__radio-button::after {
+  opacity: 1;
+}
+.payment__buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=globals.css.map */
